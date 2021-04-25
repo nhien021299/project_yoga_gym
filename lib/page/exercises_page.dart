@@ -1,11 +1,11 @@
 import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:fitness_app_ii_example/page/exercise_page.dart';
+import 'package:fitness_app_ii_example/page/exercise_video_page.dart';
 import 'package:flutter/material.dart';
 
-class ExercisesWidget extends StatelessWidget {
+class ExercisesPage extends StatelessWidget {
   final ExerciseSet exerciseSet;
 
-  const ExercisesWidget({Key key, this.exerciseSet}) : super(key: key);
+  const ExercisesPage({Key key, this.exerciseSet}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ExercisesWidget extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ExercisePage(
+                    builder: (context) => ExerciseVideoPage(
                       exerciseSet: exerciseSet,
                       selectedExercise: exerciseSet.exercises[index],
                     ),

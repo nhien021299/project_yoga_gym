@@ -12,7 +12,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Fitness App UI';
+  static final String title = 'Fitness App';
 
   @override
   Widget build(BuildContext context) => MaterialApp(

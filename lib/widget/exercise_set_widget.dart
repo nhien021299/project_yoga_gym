@@ -1,5 +1,5 @@
 import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:fitness_app_ii_example/widget/exercises_widget.dart';
+import 'package:fitness_app_ii_example/page/exercises_page.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseSetWidget extends StatelessWidget {
@@ -12,7 +12,7 @@ class ExerciseSetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ExercisesWidget(exerciseSet: exerciseSet),
+          builder: (context) => ExercisesPage(exerciseSet: exerciseSet),
         )),
         child: Container(
           padding: const EdgeInsets.all(16),

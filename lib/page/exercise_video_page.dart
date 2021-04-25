@@ -4,20 +4,20 @@ import 'package:fitness_app_ii_example/widget/video_controls_widget.dart';
 import 'package:fitness_app_ii_example/widget/video_player_widget.dart';
 import 'package:flutter/material.dart';
 
-class ExercisePage extends StatefulWidget {
+class ExerciseVideoPage extends StatefulWidget {
   final ExerciseSet exerciseSet;
   final Exercise selectedExercise;
 
-  const ExercisePage({
+  const ExerciseVideoPage({
     @required this.exerciseSet,
     this.selectedExercise,
   });
 
   @override
-  _ExercisePageState createState() => _ExercisePageState();
+  _ExerciseVideoPageState createState() => _ExerciseVideoPageState();
 }
 
-class _ExercisePageState extends State<ExercisePage> {
+class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
   final controller = PageController();
   Exercise currentExercise;
 

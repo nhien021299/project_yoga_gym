@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'exercise_set_widget.dart';
 
-class AllExercisesWidget extends StatefulWidget {
+class BuildBodyWidget extends StatefulWidget {
   @override
-  _AllExercisesWidgetState createState() => _AllExercisesWidgetState();
+  _BuildBodyWidgetState createState() => _BuildBodyWidgetState();
 }
 
-class _AllExercisesWidgetState extends State<AllExercisesWidget> {
+class _BuildBodyWidgetState extends State<BuildBodyWidget> {
   ExerciseType selectedType = ExerciseType.low;
 
   @override
