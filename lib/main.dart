@@ -1,4 +1,5 @@
-import 'package:fitness_app_ii_example/page/home_page.dart';
+import 'package:fitness_app_ii_example/page/exercises/all_exercises_page.dart';
+import 'package:fitness_app_ii_example/page/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

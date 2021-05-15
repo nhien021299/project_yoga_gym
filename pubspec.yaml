@@ -16,6 +16,10 @@ dependencies:
   # video
   video_player: ^1.0.1
 
+  get: ^3.26.0
+
+  google_fonts: ^1.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,4 +28,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/videos/

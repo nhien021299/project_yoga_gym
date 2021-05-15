@@ -1,8 +1,8 @@
-import 'package:fitness_app_ii_example/widget/body_widget.dart';
+import 'package:fitness_app_ii_example/page/exercises/widgets/body_widget.dart';
 import 'package:fitness_app_ii_example/widget/line_chart_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class AllExercisePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: CustomScrollView(
