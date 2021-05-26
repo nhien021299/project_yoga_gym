@@ -34,43 +34,35 @@ class ExercisesItemWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          height: 1,
-                        ),
-                      ),
-                      SizedBox(height: 16 / 2),
                       Row(
                         children: [
                           Text(
-                            value,
+                            title,
                             style: Theme.of(context).textTheme.headline4.copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold,
-                              height: 1,
-                            ),
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1,
+                                ),
                           ),
                           SizedBox(width: 16 / 2),
                           Text(
                             unit ?? "",
                           ),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 16 / 2),
+                      Text(
+                        value,
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              height: 1,
+                            ),
+                      ),
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Icon(Icons.timer_rounded),
-                    SizedBox(width: 16),
-                    Icon(Icons.bookmark_rounded),
-                    SizedBox(width: 16),
-                    Icon(Icons.star_rounded),
-                  ],
-                ),
+                Icon(Icons.star_rounded),
               ],
             ),
           ),
