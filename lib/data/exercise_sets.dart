@@ -1,4 +1,4 @@
-import 'package:fitness_app_ii_example/model/exercise_set.dart';
+import '../model/exercise_set.dart';
 import 'package:flutter/material.dart';
 
 import 'exercise.dart';

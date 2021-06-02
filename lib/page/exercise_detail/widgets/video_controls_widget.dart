@@ -1,5 +1,6 @@
-import 'package:fitness_app_ii_example/model/exercise.dart';
 import 'package:flutter/material.dart';
+
+import '../../../model/exercise.dart';
 
 class VideoControlsWidget extends StatelessWidget {
   final Exercise exercise;

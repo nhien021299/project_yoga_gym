@@ -1,10 +1,10 @@
-import 'package:fitness_app_ii_example/page/custom_exercises/custom_exercises_page.dart';
-import 'package:fitness_app_ii_example/page/exercises/all_exercises_page.dart';
-import 'package:fitness_app_ii_example/page/favourite/favourite_page.dart';
-import 'package:fitness_app_ii_example/page/history/history_page.dart';
-import 'package:fitness_app_ii_example/widget/tab_item_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../widget/tab_item_widget.dart';
+import '../custom_exercises/custom_exercises_page.dart';
+import '../exercises/all_exercises_page.dart';
+import '../favourite/favourite_page.dart';
+import '../history/history_page.dart';
 import 'home_page.dart';
 
 class MainPage extends StatelessWidget {
@@ -31,7 +31,8 @@ class MainPage extends StatelessWidget {
             color: Color(0xFF4E1E46),
           ),
           child: TabBar(
-            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
             unselectedLabelColor: Colors.grey,
             indicatorColor: Colors.redAccent,
             tabs: [

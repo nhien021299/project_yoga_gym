@@ -1,8 +1,8 @@
-import 'package:fitness_app_ii_example/widget/default_layout.dart';
-import 'package:fitness_app_ii_example/widget/exercise_set_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../widget/default_layout.dart';
+import '../../widget/exercise_set_item_widget.dart';
 import 'widgets/activity_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -84,11 +84,18 @@ class HomePage extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout1.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/pushup.png",),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png",),
+                          ExerciseSetItemWidget(
+                              imageUrl: "assets/images/workout1.png"),
+                          ExerciseSetItemWidget(
+                              imageUrl: "assets/images/workout2.png"),
+                          ExerciseSetItemWidget(
+                              imageUrl: "assets/images/workout3.png"),
+                          ExerciseSetItemWidget(
+                            imageUrl: "assets/images/pushup.png",
+                          ),
+                          ExerciseSetItemWidget(
+                            imageUrl: "assets/images/crunch.png",
+                          ),
                         ],
                       ),
                     ),
@@ -97,9 +104,9 @@ class HomePage extends StatelessWidget {
                   Text(
                     "Yoga basic",
                     style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                        ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -108,11 +115,18 @@ class HomePage extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout1.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/pushup.png",),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png",),
+                          ExerciseSetItemWidget(
+                              imageUrl: "assets/images/workout1.png"),
+                          ExerciseSetItemWidget(
+                              imageUrl: "assets/images/workout2.png"),
+                          ExerciseSetItemWidget(
+                              imageUrl: "assets/images/workout3.png"),
+                          ExerciseSetItemWidget(
+                            imageUrl: "assets/images/pushup.png",
+                          ),
+                          ExerciseSetItemWidget(
+                            imageUrl: "assets/images/crunch.png",
+                          ),
                         ],
                       ),
                     ),
@@ -126,7 +140,10 @@ class HomePage extends StatelessWidget {
                             children: [
                               Text(
                                 "GOOD",
-                                style: Theme.of(context).textTheme.headline3.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline3
+                                    .copyWith(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -149,11 +166,16 @@ class HomePage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_half_rounded, color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_half_rounded,
+                                  color: Theme.of(context).primaryColor),
                             ],
                           ),
                         ),

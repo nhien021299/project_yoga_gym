@@ -1,6 +1,7 @@
-import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:fitness_app_ii_example/page/exercise_detail/exercise_video_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../model/exercise_set.dart';
+import '../exercise_detail/exercise_video_page.dart';
 
 class ExercisesPage extends StatelessWidget {
   final ExerciseSet exerciseSet;
@@ -29,7 +30,8 @@ class ExercisesPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30.0),
@@ -53,9 +55,17 @@ class ExercisesPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Name : ' + exerciseSet.exercises[index].name),
-                              Text('Duration : '+exerciseSet.exercises[index].duration.inSeconds.toString() + ' seconds'),
-                              Text('Reps : ' + exerciseSet.exercises[index].noOfReps.toString() + ' times'),
+                              Text('Name : ' +
+                                  exerciseSet.exercises[index].name),
+                              Text('Duration : ' +
+                                  exerciseSet
+                                      .exercises[index].duration.inSeconds
+                                      .toString() +
+                                  ' seconds'),
+                              Text('Reps : ' +
+                                  exerciseSet.exercises[index].noOfReps
+                                      .toString() +
+                                  ' times'),
                             ],
                           ),
                         ],

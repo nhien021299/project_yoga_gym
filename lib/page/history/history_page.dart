@@ -1,10 +1,10 @@
-import 'package:fitness_app_ii_example/page/history/widgets/progress_bar.dart';
-import 'package:fitness_app_ii_example/widget/default_layout.dart';
-import 'package:fitness_app_ii_example/widget/exercises_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../widget/default_layout.dart';
+import '../../widget/exercises_item_widget.dart';
 import 'widgets/day_in_week_card.dart';
+import 'widgets/progress_bar.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({Key key}) : super(key: key);
@@ -27,7 +27,8 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<DateTime> listDateTime = List<DateTime>.generate(7, (index) => now.subtract(Duration(days: index)));
+    List<DateTime> listDateTime = List<DateTime>.generate(
+        7, (index) => now.subtract(Duration(days: index)));
     return DefaultLayout(
       background: Image.asset(
         'assets/images/home_bg.png',
@@ -54,7 +55,8 @@ class _HistoryPageState extends State<HistoryPage> {
               SizedBox(
                 height: 70,
                 child: ListView.builder(
-                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
                   reverse: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: listDateTime?.length,
@@ -64,7 +66,8 @@ class _HistoryPageState extends State<HistoryPage> {
                         onTap: () => onSelectedDay(listDateTime[index]),
                         child: DayInWeekCard(
                           dateTime: listDateTime[index],
-                          isSelected: equalsDate(listDateTime[index], _selectedDay.value),
+                          isSelected: equalsDate(
+                              listDateTime[index], _selectedDay.value),
                         ),
                       ),
                     );
@@ -89,15 +92,24 @@ class _HistoryPageState extends State<HistoryPage> {
                 child: SingleChildScrollView(
                     child: Column(
                   children: [
-                    ExercisesItemWidget(image: "assets/images/workout1.png", title: "Work Out 1", value: "15 times"),
+                    ExercisesItemWidget(
+                        image: "assets/images/workout1.png",
+                        title: "Work Out 1",
+                        value: "15 times"),
                     Divider(
                       height: 32,
                     ),
-                    ExercisesItemWidget(image: "assets/images/workout2.png", title: "Work Out 2", value: "20 times"),
+                    ExercisesItemWidget(
+                        image: "assets/images/workout2.png",
+                        title: "Work Out 2",
+                        value: "20 times"),
                     Divider(
                       height: 32,
                     ),
-                    ExercisesItemWidget(image: "assets/images/workout3.png", title: "Work Out 3", value: "25 times"),
+                    ExercisesItemWidget(
+                        image: "assets/images/workout3.png",
+                        title: "Work Out 3",
+                        value: "25 times"),
                     Divider(
                       height: 32,
                     ),

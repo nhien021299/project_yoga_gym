@@ -1,8 +1,9 @@
-import 'package:fitness_app_ii_example/model/exercise.dart';
-import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:fitness_app_ii_example/page/exercise_detail/widgets/video_controls_widget.dart';
-import 'package:fitness_app_ii_example/page/exercise_detail/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../model/exercise.dart';
+import '../../model/exercise_set.dart';
+import 'widgets/video_controls_widget.dart';
+import 'widgets/video_player_widget.dart';
 
 class ExerciseVideoPage extends StatefulWidget {
   final ExerciseSet exerciseSet;

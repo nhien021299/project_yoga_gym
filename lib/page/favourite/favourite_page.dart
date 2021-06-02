@@ -1,7 +1,8 @@
-import 'package:fitness_app_ii_example/widget/default_layout.dart';
-import 'package:fitness_app_ii_example/widget/exercises_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../widget/default_layout.dart';
+import '../../widget/exercises_item_widget.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({Key key}) : super(key: key);
@@ -26,9 +27,9 @@ class FavouritePage extends StatelessWidget {
                 Text(
                   "Favourite",
                   style: Theme.of(context).textTheme.headline3.copyWith(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 Divider(
                   height: 32,
@@ -42,23 +43,38 @@ class FavouritePage extends StatelessWidget {
                           // buildWorkouts(),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(image: "assets/images/workout1.png", title: "Work Out", value: "15 times"),
+                            child: ExercisesItemWidget(
+                                image: "assets/images/workout1.png",
+                                title: "Work Out",
+                                value: "15 times"),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(image: "assets/images/workout2.png", title: "Work Out", value: "15 times"),
+                            child: ExercisesItemWidget(
+                                image: "assets/images/workout2.png",
+                                title: "Work Out",
+                                value: "15 times"),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(image: "assets/images/workout3.png", title: "Work Out", value: "15 times"),
+                            child: ExercisesItemWidget(
+                                image: "assets/images/workout3.png",
+                                title: "Work Out",
+                                value: "15 times"),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(image: "assets/images/crunch.png", title: "Work Out", value: "15 times"),
+                            child: ExercisesItemWidget(
+                                image: "assets/images/crunch.png",
+                                title: "Work Out",
+                                value: "15 times"),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(image: "assets/images/pushup.png", title: "Work Out", value: "15 times"),
+                            child: ExercisesItemWidget(
+                                image: "assets/images/pushup.png",
+                                title: "Work Out",
+                                value: "15 times"),
                           ),
                         ],
                       ),

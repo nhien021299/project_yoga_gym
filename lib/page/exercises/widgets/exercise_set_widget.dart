@@ -1,6 +1,7 @@
-import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:fitness_app_ii_example/page/exercises/exercises_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../../model/exercise_set.dart';
+import '../exercises_page.dart';
 
 class ExerciseSetWidget extends StatelessWidget {
   final ExerciseSet exerciseSet;
