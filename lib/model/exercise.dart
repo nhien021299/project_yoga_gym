@@ -7,9 +7,15 @@ class Exercise {
   final int noOfReps;
   final String videoUrl;
   final String imageUrl;
+  final DateTime createdAt;
+  final int point;
+  final String type;
   VideoPlayerController controller;
 
   Exercise({
+    this.type,
+    this.createdAt,
+    this.point,
     this.id,
     this.name,
     this.duration,
@@ -29,19 +35,24 @@ class Exercise {
     //   });
     // }
     return Exercise(
-      id: (json['id']) ?? null,
+      id: (json['id'].toString()) ?? null,
       name: json['name'] ?? null,
-      duration: (json['duration']) ?? null,
+      // duration: (json['duration']) ?? null,
       noOfReps: json["noOfReps"] ?? null,
+      createdAt: DateTime.parse(json["createdAt"]).toLocal() ?? null,
+      point: json["point"] ?? null,
     );
   }
 
   Map<String, dynamic> toMapForDb() {
     var map = Map<String, dynamic>();
-    map['id'] = id;
+
+    // map['id'] = id;
     map['name'] = name;
-    map['duration'] = duration;
-    map['noOfReps'] = noOfReps;
+    // map['duration'] = duration;
+    map['reps'] = noOfReps;
+    map['createdAt'] = createdAt.toIso8601String();
+    map['point'] = point;
     return map;
   }
 }

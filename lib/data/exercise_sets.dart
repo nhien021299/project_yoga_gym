@@ -10,6 +10,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout1.png',
     exerciseType: ExerciseType.low,
     color: Colors.blue.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Abs',
@@ -17,6 +18,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/crunch.png',
     exerciseType: ExerciseType.low,
     color: Colors.green.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Upper Body',
@@ -24,6 +26,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/pushup.png',
     exerciseType: ExerciseType.low,
     color: Colors.orange.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Yoga',
@@ -31,6 +34,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/yoga.png',
     exerciseType: ExerciseType.low,
     color: Colors.purple.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Cardio',
@@ -38,6 +42,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout3.png',
     exerciseType: ExerciseType.low,
     color: Colors.red.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Stretching',
@@ -45,6 +50,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout2.png',
     exerciseType: ExerciseType.mid,
     color: Colors.pink.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Core',
@@ -52,6 +58,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout3.png',
     exerciseType: ExerciseType.mid,
     color: Colors.yellowAccent.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Cardio',
@@ -59,6 +66,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout1.png',
     exerciseType: ExerciseType.mid,
     color: Colors.orange.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Yoga',
@@ -66,6 +74,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/yoga.png',
     exerciseType: ExerciseType.mid,
     color: Colors.purple.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Abs',
@@ -73,6 +82,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/crunch.png',
     exerciseType: ExerciseType.mid,
     color: Colors.blue.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Shoulder',
@@ -80,6 +90,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/pushup.png',
     exerciseType: ExerciseType.mid,
     color: Colors.teal.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Acrobatic',
@@ -87,6 +98,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout3.png',
     exerciseType: ExerciseType.hard,
     color: Colors.orange.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Hands',
@@ -94,6 +106,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/pushup.png',
     exerciseType: ExerciseType.hard,
     color: Colors.blue.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Abs',
@@ -101,6 +114,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/crunch.png',
     exerciseType: ExerciseType.hard,
     color: Colors.teal.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Core',
@@ -108,6 +122,7 @@ final exerciseSets = [
     imageUrl: 'assets/images/workout2.png',
     exerciseType: ExerciseType.hard,
     color: Colors.purple.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
   ExerciseSet(
     name: 'Yoga',
@@ -115,5 +130,6 @@ final exerciseSets = [
     imageUrl: 'assets/images/yoga.png',
     exerciseType: ExerciseType.hard,
     color: Colors.orange.shade100.withOpacity(0.6),
+    totalPoint: 100,
   ),
 ];

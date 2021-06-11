@@ -7,6 +7,8 @@ final exercises1 = [
     noOfReps: 12,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Push Up',
@@ -14,6 +16,8 @@ final exercises1 = [
     noOfReps: 10,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Plank',
@@ -21,6 +25,8 @@ final exercises1 = [
     noOfReps: 15,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Pull Up',
@@ -28,6 +34,8 @@ final exercises1 = [
     noOfReps: 8,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Crunch',
@@ -35,6 +43,8 @@ final exercises1 = [
     noOfReps: 12,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Lunges',
@@ -42,6 +52,8 @@ final exercises1 = [
     noOfReps: 15,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Squats',
@@ -49,6 +61,8 @@ final exercises1 = [
     noOfReps: 20,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Burpees',
@@ -56,6 +70,8 @@ final exercises1 = [
     noOfReps: 10,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
 ];
 
@@ -66,6 +82,8 @@ final exercises2 = [
     noOfReps: 6,
     videoUrl: 'assets/videos/yoga2.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Side Jump',
@@ -73,6 +91,8 @@ final exercises2 = [
     noOfReps: 6,
     videoUrl: 'assets/videos/yoga.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Plank',
@@ -80,6 +100,8 @@ final exercises2 = [
     noOfReps: 8,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Crunch',
@@ -87,6 +109,8 @@ final exercises2 = [
     noOfReps: 10,
     videoUrl: 'assets/videos/yoga.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Lunges',
@@ -94,6 +118,8 @@ final exercises2 = [
     noOfReps: 12,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Squats',
@@ -101,6 +127,8 @@ final exercises2 = [
     noOfReps: 5,
     videoUrl: 'assets/videos/yoga2.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Burpees',
@@ -108,6 +136,8 @@ final exercises2 = [
     noOfReps: 15,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
 ];
 
@@ -118,6 +148,8 @@ final exercises3 = [
     noOfReps: 20,
     videoUrl: 'assets/videos/yoga.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Push Up',
@@ -125,6 +157,8 @@ final exercises3 = [
     noOfReps: 5,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Side Jump',
@@ -132,6 +166,8 @@ final exercises3 = [
     noOfReps: 8,
     videoUrl: 'assets/videos/yoga2.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Plank',
@@ -139,6 +175,8 @@ final exercises3 = [
     noOfReps: 1,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Crunch',
@@ -146,6 +184,8 @@ final exercises3 = [
     noOfReps: 12,
     videoUrl: 'assets/videos/yoga2.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Lunges',
@@ -153,6 +193,8 @@ final exercises3 = [
     noOfReps: 16,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Squats',
@@ -160,6 +202,8 @@ final exercises3 = [
     noOfReps: 14,
     videoUrl: 'assets/videos/yoga.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
 ];
 
@@ -170,6 +214,8 @@ final exercises4 = [
     noOfReps: 6,
     videoUrl: 'assets/videos/yoga.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Burpees',
@@ -177,6 +223,8 @@ final exercises4 = [
     noOfReps: 10,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Push Up',
@@ -184,6 +232,8 @@ final exercises4 = [
     noOfReps: 8,
     videoUrl: 'assets/videos/yoga2.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Side Jump',
@@ -191,6 +241,8 @@ final exercises4 = [
     noOfReps: 14,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Plank',
@@ -198,6 +250,8 @@ final exercises4 = [
     noOfReps: 12,
     videoUrl: 'assets/videos/yoga.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Crunch',
@@ -205,6 +259,8 @@ final exercises4 = [
     noOfReps: 20,
     videoUrl: 'assets/videos/yoga2.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
   Exercise(
     name: 'Squats',
@@ -212,5 +268,7 @@ final exercises4 = [
     noOfReps: 15,
     videoUrl: 'assets/videos/burpees.mp4',
     imageUrl: 'assets/images/pushup.png',
+    point: 50,
+    createdAt: DateTime.now(),
   ),
 ];
