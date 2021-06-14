@@ -60,18 +60,11 @@ class CustomExercisesPage extends StatelessWidget {
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
-                                ExerciseSetItemWidget(
-                                    imageUrl: "assets/images/workout1.png"),
-                                ExerciseSetItemWidget(
-                                    imageUrl: "assets/images/workout2.png"),
-                                ExerciseSetItemWidget(
-                                    imageUrl: "assets/images/workout3.png"),
-                                ExerciseSetItemWidget(
-                                  imageUrl: "assets/images/pushup.png",
-                                ),
-                                ExerciseSetItemWidget(
-                                  imageUrl: "assets/images/crunch.png",
-                                ),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
                               ],
                             ),
                           ),
@@ -91,18 +84,11 @@ class CustomExercisesPage extends StatelessWidget {
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: [
-                                ExerciseSetItemWidget(
-                                    imageUrl: "assets/images/workout1.png"),
-                                ExerciseSetItemWidget(
-                                    imageUrl: "assets/images/workout2.png"),
-                                ExerciseSetItemWidget(
-                                    imageUrl: "assets/images/workout3.png"),
-                                ExerciseSetItemWidget(
-                                  imageUrl: "assets/images/pushup.png",
-                                ),
-                                ExerciseSetItemWidget(
-                                  imageUrl: "assets/images/crunch.png",
-                                ),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
+                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
                               ],
                             ),
                           ),

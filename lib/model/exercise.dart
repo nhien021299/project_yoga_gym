@@ -4,7 +4,7 @@ class Exercise {
   final String id;
   final String name;
   final Duration duration;
-  final int noOfReps;
+  final int reps;
   final String videoUrl;
   final String imageUrl;
   final DateTime createdAt;
@@ -19,7 +19,7 @@ class Exercise {
     this.id,
     this.name,
     this.duration,
-    this.noOfReps,
+    this.reps,
     this.videoUrl,
     this.imageUrl,
   });
@@ -38,7 +38,10 @@ class Exercise {
       id: (json['id'].toString()) ?? null,
       name: json['name'] ?? null,
       // duration: (json['duration']) ?? null,
-      noOfReps: json["noOfReps"] ?? null,
+      reps: json["reps"] ?? null,
+      imageUrl: json["imageUrl"] ?? null,
+      videoUrl: json["videoUrl"] ?? null,
+      type: json["type"] ?? null,
       createdAt: DateTime.parse(json["createdAt"]).toLocal() ?? null,
       point: json["point"] ?? null,
     );
@@ -50,9 +53,12 @@ class Exercise {
     // map['id'] = id;
     map['name'] = name;
     // map['duration'] = duration;
-    map['reps'] = noOfReps;
+    map['reps'] = reps;
     map['createdAt'] = createdAt.toIso8601String();
     map['point'] = point;
+    map['imageUrl'] = imageUrl;
+    map['videoUrl'] = videoUrl;
+    map['type'] = type;
     return map;
   }
 }

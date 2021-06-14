@@ -84,18 +84,11 @@ class HomePage extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          ExerciseSetItemWidget(
-                              imageUrl: "assets/images/workout1.png"),
-                          ExerciseSetItemWidget(
-                              imageUrl: "assets/images/workout2.png"),
-                          ExerciseSetItemWidget(
-                              imageUrl: "assets/images/workout3.png"),
-                          ExerciseSetItemWidget(
-                            imageUrl: "assets/images/pushup.png",
-                          ),
-                          ExerciseSetItemWidget(
-                            imageUrl: "assets/images/crunch.png",
-                          ),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
                         ],
                       ),
                     ),
@@ -115,18 +108,11 @@ class HomePage extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          ExerciseSetItemWidget(
-                              imageUrl: "assets/images/workout1.png"),
-                          ExerciseSetItemWidget(
-                              imageUrl: "assets/images/workout2.png"),
-                          ExerciseSetItemWidget(
-                              imageUrl: "assets/images/workout3.png"),
-                          ExerciseSetItemWidget(
-                            imageUrl: "assets/images/pushup.png",
-                          ),
-                          ExerciseSetItemWidget(
-                            imageUrl: "assets/images/crunch.png",
-                          ),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
+                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
                         ],
                       ),
                     ),
@@ -140,10 +126,7 @@ class HomePage extends StatelessWidget {
                             children: [
                               Text(
                                 "GOOD",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline3
-                                    .copyWith(
+                                style: Theme.of(context).textTheme.headline3.copyWith(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -166,16 +149,11 @@ class HomePage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.star_rounded,
-                                  color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded,
-                                  color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded,
-                                  color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded,
-                                  color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_half_rounded,
-                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_half_rounded, color: Theme.of(context).primaryColor),
                             ],
                           ),
                         ),

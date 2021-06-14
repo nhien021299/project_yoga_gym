@@ -1,4 +1,4 @@
-import 'package:fitness_app_ii_example/data/exercise.dart';
+import 'package:fitness_app_ii_example/data/exercise_data.dart';
 import 'package:fitness_app_ii_example/dbhelper/init_db_helper.dart';
 import 'package:fitness_app_ii_example/model/exercise.dart';
 import 'package:fitness_app_ii_example/utils/string_constant.dart';
@@ -14,35 +14,31 @@ class ExerciseController extends GetxController {
   }
 
   Data dbExercise;
-  var listExercises = Rx<List<Exercise>>();
+
+  final _exercises = RxList<Exercise>();
+  final _selectedType = Rx<String>("Yoga");
+
+  List<Exercise> get exercises => _exercises.toList();
+
+  String get selectedType => _selectedType.value;
+
+  set selectedType(String type) => _selectedType.value = type;
+
+  List<Exercise> get filteredExercise => _exercises.where((element) => element.type == _selectedType.value).toList();
+
   void deleteExercise(int id) async {
     await dbExercise.remove(id: id, table: tableExerciseText);
-    dbExercise.getAllExercise().then((e) => listExercises.value = e);
+    dbExercise.getAllExercise().then((e) => _exercises.assignAll(e));
     update();
   }
 
   void getAllList() async {
-    var _listExercises = await dbExercise.getAllExercise();
-    print(_listExercises);
-
-    listExercises.value = _listExercises;
+    _exercises.assignAll(await dbExercise.getAllExercise());
     update();
   }
 
   void initExercise() {
-    exercises1.forEach((e) {
-      dbExercise.add(parameter: e, table: tableExerciseText);
-      print(e);
-    });
-    exercises2.forEach((e) {
-      dbExercise.add(parameter: e, table: tableExerciseText);
-      print(e);
-    });
-    exercises3.forEach((e) {
-      dbExercise.add(parameter: e, table: tableExerciseText);
-      print(e);
-    });
-    exercises4.forEach((e) {
+    defaultExercise.forEach((e) {
       dbExercise.add(parameter: e, table: tableExerciseText);
       print(e);
     });

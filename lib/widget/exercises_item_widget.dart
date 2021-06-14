@@ -9,7 +9,8 @@ class ExercisesItemWidget extends StatelessWidget {
     this.unit,
   }) : super(key: key);
 
-  final String image, title, unit, value;
+  final String image, title, unit;
+  final int value;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class ExercisesItemWidget extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: Theme.of(context).textTheme.headline4.copyWith(
+                            style: Theme.of(context).textTheme.headline6.copyWith(
                                   color: Theme.of(context).primaryColor,
                                   fontWeight: FontWeight.bold,
                                   height: 1,
@@ -52,7 +53,7 @@ class ExercisesItemWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 16 / 2),
                       Text(
-                        value,
+                        "${value.toString()} times",
                         style: Theme.of(context).textTheme.bodyText1.copyWith(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

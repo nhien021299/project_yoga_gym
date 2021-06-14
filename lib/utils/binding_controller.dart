@@ -6,6 +6,6 @@ class BindingController extends Bindings {
   @override
   void dependencies() {
     Get.put(ExerciseController(), permanent: true);
-    Get.put(ExerciseSetController(), permanent: true);
+    // Get.put(ExerciseSetController(), permanent: true);
   }
 }

@@ -93,23 +93,23 @@ class _HistoryPageState extends State<HistoryPage> {
                     child: Column(
                   children: [
                     ExercisesItemWidget(
-                        image: "assets/images/workout1.png",
+                        image: "assets/images/category_work_out.png",
                         title: "Work Out 1",
-                        value: "15 times"),
+                        value: 15),
                     Divider(
                       height: 32,
                     ),
                     ExercisesItemWidget(
                         image: "assets/images/workout2.png",
                         title: "Work Out 2",
-                        value: "20 times"),
+                        value: 15),
                     Divider(
                       height: 32,
                     ),
                     ExercisesItemWidget(
                         image: "assets/images/workout3.png",
                         title: "Work Out 3",
-                        value: "25 times"),
+                        value: 15),
                     Divider(
                       height: 32,
                     ),

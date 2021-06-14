@@ -63,7 +63,7 @@ class ExercisesPage extends StatelessWidget {
                                       .toString() +
                                   ' seconds'),
                               Text('Reps : ' +
-                                  exerciseSet.exercises[index].noOfReps
+                                  exerciseSet.exercises[index].reps
                                       .toString() +
                                   ' times'),
                             ],

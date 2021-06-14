@@ -44,37 +44,37 @@ class FavouritePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ExercisesItemWidget(
-                                image: "assets/images/workout1.png",
+                                image: "assets/images/category_work_out.png",
                                 title: "Work Out",
-                                value: "15 times"),
+                                value: 15),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ExercisesItemWidget(
                                 image: "assets/images/workout2.png",
                                 title: "Work Out",
-                                value: "15 times"),
+                                value: 15),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ExercisesItemWidget(
                                 image: "assets/images/workout3.png",
                                 title: "Work Out",
-                                value: "15 times"),
+                                value: 15),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ExercisesItemWidget(
                                 image: "assets/images/crunch.png",
                                 title: "Work Out",
-                                value: "15 times"),
+                                value: 15),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             child: ExercisesItemWidget(
-                                image: "assets/images/pushup.png",
+                                image: "assets/images/crunch.png",
                                 title: "Work Out",
-                                value: "15 times"),
+                                value: 15),
                           ),
                         ],
                       ),

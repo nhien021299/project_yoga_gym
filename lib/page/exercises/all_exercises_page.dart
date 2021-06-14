@@ -1,4 +1,7 @@
+import 'package:fitness_app_ii_example/controller/exercise_controller.dart';
+import 'package:fitness_app_ii_example/data/category_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '../../model/exercise_set.dart';
@@ -15,6 +18,8 @@ class AllExercisePage extends StatefulWidget {
 
 class _AllExercisePageState extends State<AllExercisePage> {
   ExerciseType selectedType = ExerciseType.low;
+
+  ExerciseController _exerciseController = Get.find();
 
   @override
   Widget build(BuildContext context) => DefaultLayout(
@@ -52,62 +57,46 @@ class _AllExercisePageState extends State<AllExercisePage> {
                         ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CategoriesItemWidget(
-                      name: "Yoga",
-                      imageUrl: "assets/images/yoga.png",
-                    ),
-                    CategoriesItemWidget(
-                      name: "Work \nOut",
-                      imageUrl: "assets/images/workout1.png",
-                    ),
-                  ],
+                SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categories.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Obx(
+                        () => GestureDetector(
+                          onTap: () => _exerciseController.selectedType = categories[index].name,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: CategoriesItemWidget(
+                              name: categories[index].name,
+                              imageUrl: categories[index].imageUrl,
+                              isSelected: categories[index].name == _exerciseController.selectedType,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: SizedBox(
-                      child: ListView(
-                        children: [
-                          // buildWorkouts(),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/workout1.png",
-                                title: "Work Out",
-                                value: "15 times"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/workout2.png",
-                                title: "Work Out",
-                                value: "15 times"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/workout3.png",
-                                title: "Work Out",
-                                value: "15 times"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/crunch.png",
-                                title: "Work Out",
-                                value: "15 times"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/pushup.png",
-                                title: "Work Out",
-                                value: "15 times"),
-                          ),
-                        ],
+                      child: Obx(
+                        () => ListView.builder(
+                          itemCount: _exerciseController.filteredExercise.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: ExercisesItemWidget(
+                                image: _exerciseController.filteredExercise[index].imageUrl,
+                                title: _exerciseController.filteredExercise[index].name,
+                                value: _exerciseController.filteredExercise[index].reps,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -118,15 +107,15 @@ class _AllExercisePageState extends State<AllExercisePage> {
         ),
       );
 
-  // Widget buildWorkouts() => Padding(
-  //   padding: const EdgeInsets.symmetric(horizontal: 16),
-  //   child: Column(
-  //         children: exerciseSets
-  //             .where((element) => element.exerciseType == selectedType)
-  //             .map(
-  //               (exerciseSet) => Container(margin: const EdgeInsets.symmetric(vertical: 10), child: ExerciseSetWidget(exerciseSet: exerciseSet)),
-  //             )
-  //             .toList(),
-  //       ),
-  // );
+// Widget buildWorkouts() => Padding(
+//   padding: const EdgeInsets.symmetric(horizontal: 16),
+//   child: Column(
+//         children: exerciseSets
+//             .where((element) => element.exerciseType == selectedType)
+//             .map(
+//               (exerciseSet) => Container(margin: const EdgeInsets.symmetric(vertical: 10), child: ExerciseSetWidget(exerciseSet: exerciseSet)),
+//             )
+//             .toList(),
+//       ),
+// );
 }

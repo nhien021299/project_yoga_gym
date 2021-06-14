@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CategoriesItemWidget extends StatelessWidget {
+class CategoriesItemWidget extends StatefulWidget {
   final String name;
   final String imageUrl;
-  const CategoriesItemWidget({Key key, this.name, this.imageUrl}) : super(key: key);
+  final bool isSelected;
 
+  const CategoriesItemWidget({Key key, this.name, this.imageUrl, this.isSelected}) : super(key: key);
+
+  @override
+  _CategoriesItemWidgetState createState() => _CategoriesItemWidgetState();
+}
+
+class _CategoriesItemWidgetState extends State<CategoriesItemWidget> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -16,7 +23,7 @@ class CategoriesItemWidget extends StatelessWidget {
           width: size.width * 0.4,
           height: size.height * 0.2,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: widget.isSelected ? Colors.redAccent.withOpacity(0.8) : Colors.white,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 bottomLeft: Radius.circular(20.0),
@@ -37,7 +44,7 @@ class CategoriesItemWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20 / 2, right: 20.0 * 3, top: 20),
                 child: Text(
-                  name,
+                  widget.name,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -55,7 +62,7 @@ class CategoriesItemWidget extends StatelessWidget {
             child: Image(
               width: size.width * 0.3,
               height: size.height * 0.2,
-              image: AssetImage(imageUrl),
+              image: AssetImage(widget.imageUrl),
             ),
           ),
         )
