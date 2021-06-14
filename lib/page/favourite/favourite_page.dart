@@ -25,11 +25,11 @@ class FavouritePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Favourite",
-                  style: Theme.of(context).textTheme.headline3.copyWith(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  "Favourite Exercises",
+                  style: Theme.of(context).textTheme.headline4.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Divider(
                   height: 32,

@@ -45,6 +45,7 @@ class Data {
       imageUrl TEXT,
       videoUrl TEXT,
       type TEXT,
+      isFavourite BOOLEAN,
       createdAt TEXT);""";
   static const tableExerciseSet = """
   CREATE TABLE exerciseSet(
@@ -63,7 +64,7 @@ class Data {
 
   Future<int> add({@required var parameter, @required String table}) async {
     var client = await db;
-    return client.insert(table, parameter.toMapForDb(), conflictAlgorithm: ConflictAlgorithm.replace);
+    return client.insert(table, parameter.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<Exercise> getOneExercise(int id) async {
@@ -102,7 +103,7 @@ class Data {
 
   Future<int> update({@required var parameter, @required String table}) async {
     var client = await db;
-    return client.update(table, parameter.toMapForDb(), where: 'id = ?', whereArgs: [parameter.id], conflictAlgorithm: ConflictAlgorithm.replace);
+    return client.update(table, parameter.toJson(), where: 'id = ?', whereArgs: [parameter.id], conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> remove({@required int id, @required String table}) async {

@@ -1,14 +1,15 @@
+import 'package:fitness_app_ii_example/widget/default_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../model/exercise.dart';
-import 'widgets/video_controls_widget.dart';
-import 'widgets/video_player_widget.dart';
 
 class ExerciseVideoPage extends StatefulWidget {
-  final Exercise selectedExercise;
+  final Exercise exercise;
 
   const ExerciseVideoPage({
-    this.selectedExercise,
+    this.exercise,
   });
 
   @override
@@ -16,56 +17,80 @@ class ExerciseVideoPage extends StatefulWidget {
 }
 
 class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
-  final controller = PageController();
+  YoutubePlayerController _controller;
   Exercise currentExercise;
 
   @override
   void initState() {
     super.initState();
-
-    currentExercise = widget.selectedExercise;
+    currentExercise = widget.exercise;
+    _controller = YoutubePlayerController(
+      initialVideoId: currentExercise.videoUrl,
+      flags: YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+        loop: true,
+        hideThumbnail: false,
+        enableCaption: true,
+        forceHD: true,
+      ),
+    );
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    _controller.pause();
+    super.deactivate();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultLayout(
+      background: Image.asset(
+        'assets/images/home_bg.png',
+        height: Get.height,
+        width: Get.width,
+        fit: BoxFit.fill,
+      ),
+      body: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Color(0xFF4E1E46),
           title: Text(
-            currentExercise.name,
+            "Exercise Tutorial",
             style: TextStyle(color: Colors.red),
           ),
-          centerTitle: true,
-          elevation: 0,
         ),
-        body: Stack(
-          children: [
-            buildVideos(),
-          ],
+        body: YoutubePlayerBuilder(
+          player: YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+          ),
+          builder: (context, player) {
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  child: Text(
+                    currentExercise.name,
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                ),
+                player,
+              ],
+            );
+          },
         ),
-      );
-
-  Widget buildVideos() => VideoPlayerWidget(
-        exercise: widget.selectedExercise,
-      );
-
-  Widget buildVideoControls() => VideoControlsWidget(
-        exercise: currentExercise,
-        onTogglePlaying: (isPlaying) {
-          setState(() {
-            if (isPlaying) {
-              currentExercise.controller.play();
-            } else {
-              currentExercise.controller.pause();
-            }
-          });
-        },
-        onNextVideo: () => controller.nextPage(
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeIn,
-        ),
-        onRewindVideo: () => controller.previousPage(
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeIn,
-        ),
-      );
+      ),
+    );
+  }
 }

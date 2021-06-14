@@ -1,5 +1,3 @@
-import 'package:video_player/video_player.dart';
-
 class Exercise {
   final String id;
   final String name;
@@ -10,7 +8,7 @@ class Exercise {
   final DateTime createdAt;
   final int point;
   final String type;
-  VideoPlayerController controller;
+  final bool isFavourite;
 
   Exercise({
     this.type,
@@ -22,7 +20,9 @@ class Exercise {
     this.reps,
     this.videoUrl,
     this.imageUrl,
+    this.isFavourite,
   });
+
   factory Exercise.fromJson(Map<String, dynamic> json) {
     // final raws = json['product'];
     // Product orderProducts = ;
@@ -44,21 +44,18 @@ class Exercise {
       type: json["type"] ?? null,
       createdAt: DateTime.parse(json["createdAt"]).toLocal() ?? null,
       point: json["point"] ?? null,
+      isFavourite: json["isFavourite"] ?? null,
     );
   }
 
-  Map<String, dynamic> toMapForDb() {
-    var map = Map<String, dynamic>();
-
-    // map['id'] = id;
-    map['name'] = name;
-    // map['duration'] = duration;
-    map['reps'] = reps;
-    map['createdAt'] = createdAt.toIso8601String();
-    map['point'] = point;
-    map['imageUrl'] = imageUrl;
-    map['videoUrl'] = videoUrl;
-    map['type'] = type;
-    return map;
-  }
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        'reps': reps,
+        'createdAt': createdAt.toIso8601String(),
+        'point': point,
+        'imageUrl': imageUrl,
+        'videoUrl': videoUrl,
+        'type': type,
+        'isFavourite': isFavourite,
+      };
 }

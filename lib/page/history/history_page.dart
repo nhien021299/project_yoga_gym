@@ -46,10 +46,10 @@ class _HistoryPageState extends State<HistoryPage> {
             children: [
               Text(
                 "Weekly Activity",
-                style: Theme.of(context).textTheme.headline5.copyWith(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: Theme.of(context).textTheme.headline4.copyWith(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 16),
               SizedBox(

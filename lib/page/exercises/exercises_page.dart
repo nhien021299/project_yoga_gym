@@ -39,9 +39,9 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   child: Text(
                     "Exercise",
                     style: Theme.of(context).textTheme.headline4.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 SizedBox(height: 12),
@@ -88,7 +88,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                             return GestureDetector(
                               onTap: () => Get.to(
                                 ExerciseVideoPage(
-                                  selectedExercise: _exerciseController.filteredExercise[index],
+                                  exercise: _exerciseController.filteredExercise[index],
                                 ),
                               ),
                               child: Padding(

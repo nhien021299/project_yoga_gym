@@ -26,10 +26,10 @@ class CustomExercisesPage extends StatelessWidget {
               children: [
                 Text(
                   "Customized",
-                  style: Theme.of(context).textTheme.headline3.copyWith(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context).textTheme.headline4.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 12),
                 Text(
