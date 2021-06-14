@@ -28,10 +28,10 @@ class VideoControlsWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                buildText(
-                  title: 'Duration',
-                  value: '${exercise.duration.inSeconds} Seconds',
-                ),
+                // buildText(
+                //   title: 'Duration',
+                //   value: '${exercise.duration.inSeconds} Seconds',
+                // ),
                 buildText(
                   title: 'Reps',
                   value: '${exercise.reps} times',

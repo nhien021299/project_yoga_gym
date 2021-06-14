@@ -16,6 +16,8 @@ dependencies:
   # video
   video_player: ^1.0.1
 
+  better_player: ^0.0.61
+
   get: ^3.26.0
 
   google_fonts: ^1.1.2

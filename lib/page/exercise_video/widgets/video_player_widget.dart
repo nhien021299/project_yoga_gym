@@ -22,19 +22,26 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   void initState() {
     super.initState();
     controller = VideoPlayerController.asset(widget.exercise.videoUrl)
+      ..addListener(() => setState(() {}))
+      ..setLooping(true)
       ..initialize().then((value) {
-        controller.setLooping(true);
         controller.play();
-
-        widget.exercise.controller = controller;
-        widget.onInitialized();
       });
   }
 
   @override
-  Widget build(BuildContext context) => SizedBox.expand(
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AspectRatio(
+        aspectRatio: controller.value.aspectRatio,
         child: controller.value.initialized
             ? VideoPlayer(controller)
-            : Center(child: CircularProgressIndicator()),
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       );
 }
