@@ -3,7 +3,6 @@ import '../model/exercise.dart';
 final defaultExercise = [
   Exercise(
     name: "Child's Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'qYvYsFrTI0U',
     imageUrl: 'assets/images/child_pose.jpg',
@@ -13,7 +12,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Downward-Facing Dog",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'SwewhLZ7_TM',
     imageUrl: 'assets/images/facing_dog.jpg',
@@ -23,7 +21,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Plank Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'MGj1eknWWTo',
     imageUrl: 'assets/images/plank.jpg',
@@ -33,7 +30,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Four-Limbed Staff Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'zSknyN77t2k&t=17s',
     imageUrl: 'assets/images/limbed_staff_pose.jpg',
@@ -43,7 +39,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Cobra Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'JDcdhTuycOI',
     imageUrl: 'assets/images/cobra_pose.jpg',
@@ -53,7 +48,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Tree Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'Fr5kiIygm0c',
     imageUrl: 'assets/images/tree_pose.jpg',
@@ -63,7 +57,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Triangle Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'S6gB0QHbWFE',
     imageUrl: 'assets/images/triangle_pose.jpg',
@@ -73,7 +66,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Half-Spinal Twist Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'ciGK6HyYqV4',
     imageUrl: 'assets/images/fishes_pose.jpg',
@@ -83,7 +75,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Bridge Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: '0hlKymgBr2s',
     imageUrl: 'assets/images/bridge_pose.jpg',
@@ -93,7 +84,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Corpse Pose",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: '1VYlOKUdylM',
     imageUrl: 'assets/images/corpse_pose.jpg',
@@ -103,7 +93,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Jump Rope",
-    duration: Duration(seconds: 30),
     reps: 12,
     videoUrl: 'u3zgHI8QnqE',
     imageUrl: 'assets/images/jump_rope.jpg',
@@ -113,7 +102,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Jumping Jack",
-    duration: Duration(seconds: 30),
     reps: 25,
     videoUrl: '1b98WrRrmUs',
     imageUrl: 'assets/images/jumping_jack.jpg',
@@ -123,7 +111,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Squats",
-    duration: Duration(seconds: 30),
     reps: 20,
     videoUrl: 'xqvCmoLULNY',
     imageUrl: 'assets/images/squat.jpg',
@@ -133,7 +120,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Lunges",
-    duration: Duration(seconds: 30),
     reps: 10,
     videoUrl: 'zaongQlYTto',
     imageUrl: 'assets/images/lunge.jpg',
@@ -143,7 +129,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Hip Extensions",
-    duration: Duration(seconds: 30),
     reps: 10,
     videoUrl: 'XzSKVCEPV68',
     imageUrl: 'assets/images/hip_extension.jpg',
@@ -153,7 +138,6 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Leg Swings",
-    duration: Duration(seconds: 30),
     reps: 20,
     videoUrl: 'WTKb4VkZYqI',
     imageUrl: 'assets/images/leg_swing.jpg',
@@ -163,12 +147,10 @@ final defaultExercise = [
   ),
   Exercise(
     name: "Push ups",
-    duration: Duration(seconds: 30),
     reps: 20,
     videoUrl: 'bt5b9x9N0KU',
     imageUrl: 'assets/images/push_up.jpg',
     point: 50,
     type: "Work \nOut",
-    createdAt: DateTime.now(),
   ),
 ];

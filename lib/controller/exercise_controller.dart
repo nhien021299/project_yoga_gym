@@ -28,18 +28,19 @@ class ExerciseController extends GetxController {
 
   void deleteExercise(int id) async {
     await dbExercise.remove(id: id, table: tableExerciseText);
-    dbExercise.getAllExercise().then((e) => _exercises.assignAll(e));
+    dbExercise.getExercises().then((e) => _exercises.assignAll(e));
     update();
   }
 
   void getAllList() async {
-    _exercises.assignAll(await dbExercise.getAllExercise());
+    _exercises.assignAll(await dbExercise.getExercises());
     update();
   }
 
   void initExercise() {
     defaultExercise.forEach((e) {
-      dbExercise.add(parameter: e, table: tableExerciseText);
+      // dbExercise.add(parameter: e, table: tableExerciseText);
+      addExercise(e);
       print(e);
     });
   }

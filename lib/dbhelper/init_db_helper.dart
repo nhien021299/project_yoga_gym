@@ -50,13 +50,25 @@ class Data {
   static const tableExerciseSet = """
   CREATE TABLE exerciseSet(
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      exercises TEXT NOT NULL,
-      exerciseType TEXT,
-      totalPoint INTEGER)""";
+      name TEXT NOT NULL,
+      createdAt TEXT,)""";
+  static const tableCustomExercise = """
+  CREATE TABLE exercise(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      exerciseSetId INTEGER NOT NULL,
+      name TEXT,
+      reps INTEGER,
+      point INTEGER,
+      imageUrl TEXT,
+      videoUrl TEXT,
+      type TEXT,
+      isFavourite BOOLEAN,
+      createdAt TEXT);""";
 
   void _onCreate(Database db, int version) async {
     await db.execute(tableExercise);
     await db.execute(tableExerciseSet);
+    await db.execute(tableCustomExercise);
     print("Database was created!");
   }
 
@@ -79,7 +91,7 @@ class Data {
     return null;
   }
 
-  Future<List<Exercise>> getAllExercise() async {
+  Future<List<Exercise>> getExercises() async {
     var client = await db;
     var res = await client.query(tableExerciseText);
 
@@ -90,20 +102,38 @@ class Data {
     return exercises;
   }
 
-  Future getAllExerciseSet() async {
+  Future<List<Exercise>> getCustomExercises() async {
+    var client = await db;
+    var res = await client.query(tableCustomExercise);
+
+    List<Exercise> exercises = [];
+    if (res.isNotEmpty) {
+      exercises = res.map((map) => Exercise.fromJson(map)).toList();
+    }
+    return exercises;
+  }
+
+  Future<List<ExerciseSet>> getExerciseSets() async {
     var client = await db;
     var res = await client.query(tableExerciseSetText);
 
+    List<ExerciseSet> exerciseSets = [];
     if (res.isNotEmpty) {
-      var exercises = res.map((map) => ExerciseSet.fromJson(map)).toList();
-      return exercises;
+      exerciseSets = res.map((map) => ExerciseSet.fromJson(map)).toList();
+      return exerciseSets;
     }
-    return [];
+    return exerciseSets;
   }
 
-  Future<int> update({@required var parameter, @required String table}) async {
+  Future<int> update({@required var parameter, @required String table, @required bool isFavourite}) async {
     var client = await db;
-    return client.update(table, parameter.toJson(), where: 'id = ?', whereArgs: [parameter.id], conflictAlgorithm: ConflictAlgorithm.replace);
+    return client.update(
+      table,
+      {'isFavourite': isFavourite},
+      where: 'id = ?',
+      whereArgs: [parameter.id],
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   Future<void> remove({@required int id, @required String table}) async {

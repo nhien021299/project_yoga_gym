@@ -1,7 +1,7 @@
 class Exercise {
   final String id;
+  final String exerciseSetId;
   final String name;
-  final Duration duration;
   final int reps;
   final String videoUrl;
   final String imageUrl;
@@ -16,28 +16,18 @@ class Exercise {
     this.point,
     this.id,
     this.name,
-    this.duration,
     this.reps,
     this.videoUrl,
     this.imageUrl,
     this.isFavourite,
+    this.exerciseSetId,
   });
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
-    // final raws = json['product'];
-    // Product orderProducts = ;
-
-    // if (raws != null && raws is List && raws.isNotEmpty) {
-    //   orderProducts = [];
-    //   raws.forEach((rawI) {
-    //     final orderProduct = Product.fromJson(rawI);
-    //     orderProducts.add(orderProduct);
-    //   });
-    // }
     return Exercise(
       id: (json['id'].toString()) ?? null,
+      exerciseSetId: (json['exerciseSetId'].toString()) ?? null,
       name: json['name'] ?? null,
-      // duration: (json['duration']) ?? null,
       reps: json["reps"] ?? null,
       imageUrl: json["imageUrl"] ?? null,
       videoUrl: json["videoUrl"] ?? null,
@@ -49,6 +39,7 @@ class Exercise {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'exerciseSetId': exerciseSetId,
         'name': name,
         'reps': reps,
         'createdAt': createdAt.toIso8601String(),
