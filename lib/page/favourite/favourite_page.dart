@@ -1,6 +1,5 @@
 import '../../controller/favorite_controller.dart';
 import '../../utils/constant.dart';
-import '../../utils/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

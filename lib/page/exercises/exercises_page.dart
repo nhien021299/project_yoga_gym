@@ -1,4 +1,3 @@
-import '../../utils/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
