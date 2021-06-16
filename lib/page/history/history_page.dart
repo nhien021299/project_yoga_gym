@@ -16,7 +16,7 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  HistoryController historyController = Get.find();
+  HistoryController historyController = Get.put(HistoryController());
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,6 @@ class _HistoryPageState extends State<HistoryPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: SizedBox(
                     child: GetX<HistoryController>(
-                      init: HistoryController(),
                       builder: (controller) {
                         return ListView.builder(
                           itemCount: controller.filteredHistories.length,
