@@ -1,4 +1,4 @@
-import 'package:fitness_app_ii_example/utils/string_constant.dart';
+import '../../utils/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -64,7 +64,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       return Obx(
                         () => GestureDetector(
                           onTap: () {
-                            _exerciseController.selectedType = categories[index].name;
+                            _exerciseController.selectedType =
+                                categories[index].name;
                             print(_exerciseController.filteredExercise.length);
                           },
                           child: Padding(
@@ -72,7 +73,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
                             child: CategoriesItemWidget(
                               name: categories[index].name,
                               imageUrl: categories[index].imageUrl,
-                              isSelected: categories[index].name == _exerciseController.selectedType,
+                              isSelected: categories[index].name ==
+                                  _exerciseController.selectedType,
                             ),
                           ),
                         ),
@@ -86,20 +88,27 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     child: SizedBox(
                       child: Obx(
                         () => ListView.builder(
-                          itemCount: _exerciseController.filteredExercise.length,
+                          itemCount:
+                              _exerciseController.filteredExercise.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () => _exerciseController.playVideo(
                                 _exerciseController.filteredExercise[index],
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 child: ExercisesItemWidget(
-                                  image: _exerciseController.filteredExercise[index].imageUrl,
-                                  title: _exerciseController.filteredExercise[index].name,
-                                  value: _exerciseController.filteredExercise[index].reps,
-                                  isFavorite: _exerciseController.filteredExercise[index].isFavourite,
-                                  onTap: () => _exerciseController.updateFavorites(
+                                  image: _exerciseController
+                                      .filteredExercise[index].imageUrl,
+                                  title: _exerciseController
+                                      .filteredExercise[index].name,
+                                  value: _exerciseController
+                                      .filteredExercise[index].reps,
+                                  isFavorite: _exerciseController
+                                      .filteredExercise[index].isFavourite,
+                                  onTap: () =>
+                                      _exerciseController.updateFavorites(
                                     _exerciseController.filteredExercise[index],
                                   ),
                                 ),

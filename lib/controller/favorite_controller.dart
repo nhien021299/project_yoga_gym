@@ -1,4 +1,4 @@
-import 'package:fitness_app_ii_example/model/exercise.dart';
+import '../model/exercise.dart';
 import 'package:get/get.dart';
 
 import 'exercise_controller.dart';

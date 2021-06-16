@@ -1,6 +1,6 @@
-import 'package:fitness_app_ii_example/controller/exercise_controller.dart';
-import 'package:fitness_app_ii_example/dbhelper/init_db_helper.dart';
-import 'package:fitness_app_ii_example/model/exercise.dart';
+import 'exercise_controller.dart';
+import '../dbhelper/init_db_helper.dart';
+import '../model/exercise.dart';
 import 'package:get/get.dart';
 
 class HistoryController extends GetxController {
@@ -12,7 +12,9 @@ class HistoryController extends GetxController {
 
   List<DateTime> listDateTime;
 
-  List<Exercise> get filteredHistories => histories.value.where((element) => equalsDate(element.createdAt, selectedDay.value)).toList();
+  List<Exercise> get filteredHistories => histories.value
+      .where((element) => equalsDate(element.createdAt, selectedDay.value))
+      .toList();
 
   @override
   void onInit() {
@@ -21,8 +23,11 @@ class HistoryController extends GetxController {
   }
 
   void loadData() async {
-    listDateTime = List<DateTime>.generate(7, (index) => now.subtract(Duration(days: index)));
-    await exerciseController.dbExercise.getAllExerciseHistory().then((value) => histories.value = value);
+    listDateTime = List<DateTime>.generate(
+        7, (index) => now.subtract(Duration(days: index)));
+    await exerciseController.dbExercise
+        .getAllExerciseHistory()
+        .then((value) => histories.value = value);
     print(filteredHistories.length);
     update();
   }

@@ -1,5 +1,5 @@
-import 'package:fitness_app_ii_example/controller/history_controller.dart';
-import 'package:fitness_app_ii_example/page/exercise_video/exercise_video_page.dart';
+import '../../controller/history_controller.dart';
+import '../exercise_video/exercise_video_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,17 +46,21 @@ class _HistoryPageState extends State<HistoryPage> {
               SizedBox(
                 height: 70,
                 child: ListView.builder(
-                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
                   reverse: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: historyController.listDateTime?.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Obx(
                       () => GestureDetector(
-                        onTap: () => historyController.onSelectedDay(historyController.listDateTime[index]),
+                        onTap: () => historyController.onSelectedDay(
+                            historyController.listDateTime[index]),
                         child: DayInWeekCard(
                           dateTime: historyController.listDateTime[index],
-                          isSelected: historyController.equalsDate(historyController.listDateTime[index], historyController.selectedDay.value),
+                          isSelected: historyController.equalsDate(
+                              historyController.listDateTime[index],
+                              historyController.selectedDay.value),
                         ),
                       ),
                     );
@@ -92,12 +96,17 @@ class _HistoryPageState extends State<HistoryPage> {
                                 exercise: controller.filteredHistories[index],
                               )),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 child: ExercisesItemWidget(
-                                  image: controller.filteredHistories[index].imageUrl,
-                                  title: controller.filteredHistories[index].name,
-                                  value: controller.filteredHistories[index].reps,
-                                  isFavorite: controller.filteredHistories[index].isFavourite,
+                                  image: controller
+                                      .filteredHistories[index].imageUrl,
+                                  title:
+                                      controller.filteredHistories[index].name,
+                                  value:
+                                      controller.filteredHistories[index].reps,
+                                  isFavorite: controller
+                                      .filteredHistories[index].isFavourite,
                                   isHistory: true,
                                 ),
                               ),

@@ -1,5 +1,5 @@
-import 'package:fitness_app_ii_example/controller/favorite_controller.dart';
-import 'package:fitness_app_ii_example/controller/history_controller.dart';
+import '../controller/favorite_controller.dart';
+import '../controller/history_controller.dart';
 
 import '../controller/exercise_controller.dart';
 import 'package:get/instance_manager.dart';
