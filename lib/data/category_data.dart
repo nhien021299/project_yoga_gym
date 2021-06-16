@@ -1,4 +1,4 @@
-import 'package:fitness_app_ii_example/model/category.dart';
+import '../model/category.dart';
 
 final categories = [
   Category(

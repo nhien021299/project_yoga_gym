@@ -1,3 +1,4 @@
+import 'package:fitness_app_ii_example/controller/history_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,6 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
     return a.day == b.day && a.month == b.month && a.year == b.year;
   }
 
+  final HistoryController historyController = Get.put(HistoryController());
   @override
   Widget build(BuildContext context) {
     List<DateTime> listDateTime = List<DateTime>.generate(
@@ -47,9 +49,9 @@ class _HistoryPageState extends State<HistoryPage> {
               Text(
                 "Weekly Activity",
                 style: Theme.of(context).textTheme.headline4.copyWith(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               SizedBox(height: 16),
               SizedBox(
@@ -83,9 +85,11 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
               ),
               SizedBox(height: 16),
-              ProgressBar(
-                currentPoint: 1750,
-                maxPoint: 2000,
+              Obx(
+                () => ProgressBar(
+                  currentPoint: 1700,
+                  maxPoint: 2000,
+                ),
               ),
               SizedBox(height: 16),
               Expanded(

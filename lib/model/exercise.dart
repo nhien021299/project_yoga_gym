@@ -20,7 +20,7 @@ class Exercise {
     this.reps,
     this.videoUrl,
     this.imageUrl,
-    this.isFavourite,
+    this.isFavourite = false,
   });
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
@@ -44,7 +44,11 @@ class Exercise {
       type: json["type"] ?? null,
       createdAt: DateTime.parse(json["createdAt"]).toLocal() ?? null,
       point: json["point"] ?? null,
-      isFavourite: json["isFavourite"] ?? null,
+      isFavourite: json["isFavourite"] == null
+          ? false
+          : json["isFavourite"] == 1
+              ? true
+              : false,
     );
   }
 

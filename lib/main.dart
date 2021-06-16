@@ -1,8 +1,8 @@
-import 'package:fitness_app_ii_example/utils/binding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'page/home/main_page.dart';
+import 'utils/binding_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

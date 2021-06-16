@@ -1,9 +1,9 @@
-import 'package:fitness_app_ii_example/widget/default_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../model/exercise.dart';
+import '../../widget/default_layout.dart';
 
 class ExerciseVideoPage extends StatefulWidget {
   final Exercise exercise;

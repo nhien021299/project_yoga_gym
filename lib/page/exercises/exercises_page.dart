@@ -1,12 +1,12 @@
-import 'package:fitness_app_ii_example/controller/exercise_controller.dart';
-import 'package:fitness_app_ii_example/data/category_data.dart';
-import 'package:fitness_app_ii_example/page/exercise_video/exercise_video_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
+import '../../controller/exercise_controller.dart';
+import '../../data/category_data.dart';
 import '../../widget/default_layout.dart';
 import '../../widget/exercises_item_widget.dart';
+import '../exercise_video/exercise_video_page.dart';
 import 'widgets/categories_item_widget.dart';
 
 class ExercisesPage extends StatefulWidget {
@@ -39,9 +39,9 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   child: Text(
                     "Exercise",
                     style: Theme.of(context).textTheme.headline4.copyWith(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
                 SizedBox(height: 12),
@@ -63,13 +63,15 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     itemBuilder: (BuildContext context, int index) {
                       return Obx(
                         () => GestureDetector(
-                          onTap: () => _exerciseController.selectedType = categories[index].name,
+                          onTap: () => _exerciseController.selectedType =
+                              categories[index].name,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: CategoriesItemWidget(
                               name: categories[index].name,
                               imageUrl: categories[index].imageUrl,
-                              isSelected: categories[index].name == _exerciseController.selectedType,
+                              isSelected: categories[index].name ==
+                                  _exerciseController.selectedType,
                             ),
                           ),
                         ),
@@ -83,20 +85,31 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     child: SizedBox(
                       child: Obx(
                         () => ListView.builder(
-                          itemCount: _exerciseController.filteredExercise.length,
+                          itemCount:
+                              _exerciseController.filteredExercise.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () => Get.to(
                                 ExerciseVideoPage(
-                                  exercise: _exerciseController.filteredExercise[index],
+                                  exercise: _exerciseController
+                                      .filteredExercise[index],
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 child: ExercisesItemWidget(
-                                  image: _exerciseController.filteredExercise[index].imageUrl,
-                                  title: _exerciseController.filteredExercise[index].name,
-                                  value: _exerciseController.filteredExercise[index].reps,
+                                  image: _exerciseController
+                                      .filteredExercise[index].imageUrl,
+                                  title: _exerciseController
+                                      .filteredExercise[index].name,
+                                  value: _exerciseController
+                                      .filteredExercise[index].reps,
+                                  isFavorite: _exerciseController
+                                      .filteredExercise[index].isFavourite,
+                                  onTap: () => _exerciseController
+                                      .updateFavorites(_exerciseController
+                                          .filteredExercise[index]),
                                 ),
                               ),
                             );

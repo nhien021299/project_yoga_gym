@@ -7,10 +7,14 @@ class ExercisesItemWidget extends StatelessWidget {
     @required this.title,
     @required this.value,
     this.unit,
+    this.onTap,
+    this.isFavorite = false,
   }) : super(key: key);
 
   final String image, title, unit;
   final int value;
+  final Function onTap;
+  final bool isFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +22,8 @@ class ExercisesItemWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 80,
-            width: 80,
+            height: MediaQuery.of(context).size.width / 4,
+            width: MediaQuery.of(context).size.width / 4,
             padding: EdgeInsets.all(16 / 2),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -32,24 +36,17 @@ class ExercisesItemWidget extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
+                  flex: 9,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            title,
-                            style: Theme.of(context).textTheme.headline6.copyWith(
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1,
-                                ),
-                          ),
-                          SizedBox(width: 16 / 2),
-                          Text(
-                            unit ?? "",
-                          ),
-                        ],
+                      Text(
+                        title,
+                        style: Theme.of(context).textTheme.headline6.copyWith(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold,
+                              height: 1,
+                            ),
                       ),
                       SizedBox(height: 16 / 2),
                       Text(
@@ -63,7 +60,18 @@ class ExercisesItemWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(Icons.star_rounded),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: onTap ?? null,
+                    child: Icon(
+                      Icons.star_rounded,
+                      color: isFavorite
+                          ? Theme.of(context).primaryColor
+                          : Colors.black,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

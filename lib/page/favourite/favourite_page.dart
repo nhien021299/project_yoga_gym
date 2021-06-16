@@ -1,3 +1,6 @@
+import 'package:fitness_app_ii_example/controller/favorite_controller.dart';
+import 'package:fitness_app_ii_example/page/exercise_video/exercise_video_page.dart';
+import 'package:fitness_app_ii_example/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,8 +8,7 @@ import '../../widget/default_layout.dart';
 import '../../widget/exercises_item_widget.dart';
 
 class FavouritePage extends StatelessWidget {
-  const FavouritePage({Key key}) : super(key: key);
-
+  FavouritePage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
@@ -20,65 +22,55 @@ class FavouritePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(defaultPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   "Favourite Exercises",
                   style: Theme.of(context).textTheme.headline4.copyWith(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 Divider(
                   height: 32,
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: SizedBox(
-                      child: ListView(
-                        children: [
-                          // buildWorkouts(),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/category_work_out.png",
-                                title: "Work Out",
-                                value: 15),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/workout2.png",
-                                title: "Work Out",
-                                value: 15),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/workout3.png",
-                                title: "Work Out",
-                                value: 15),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/crunch.png",
-                                title: "Work Out",
-                                value: 15),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: ExercisesItemWidget(
-                                image: "assets/images/crunch.png",
-                                title: "Work Out",
-                                value: 15),
-                          ),
-                        ],
-                      ),
-                    ),
+                  child: SizedBox(
+                    child: SingleChildScrollView(
+                        child: GetX<FavoriteController>(
+                            init: FavoriteController(),
+                            builder: (controller) {
+                              return Column(
+                                children: List.generate(
+                                  controller.listFavorites.value.length,
+                                  (index) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: defaultPadding),
+                                    child: GestureDetector(
+                                      onTap: () => controller.exerciseController
+                                          .playVideo(controller
+                                              .listFavorites.value[index]),
+                                      child: ExercisesItemWidget(
+                                        image: controller.listFavorites
+                                            .value[index].imageUrl,
+                                        title: controller
+                                            .listFavorites.value[index].name,
+                                        value: controller
+                                            .listFavorites.value[index].reps,
+                                        isFavorite: controller.listFavorites
+                                            .value[index].isFavourite,
+                                        onTap: () => controller
+                                            .exerciseController
+                                            .updateFavorites(controller
+                                                .listFavorites.value[index]),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            })),
                   ),
                 ),
               ],

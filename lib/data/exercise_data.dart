@@ -8,6 +8,7 @@ final defaultExercise = [
     videoUrl: 'qYvYsFrTI0U',
     imageUrl: 'assets/images/child_pose.jpg',
     point: 50,
+    isFavourite: true,
     type: "Yoga",
     createdAt: DateTime.now(),
   ),
