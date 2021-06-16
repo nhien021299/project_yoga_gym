@@ -1,10 +1,7 @@
-import 'package:fitness_app_ii_example/dbhelper/init_db_helper.dart';
-import 'package:fitness_app_ii_example/utils/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sqflite/sqflite.dart';
 
-import 'data/exercise_data.dart';
+import 'dbhelper/init_db_helper.dart';
 import 'page/home/main_page.dart';
 import 'utils/binding_controller.dart';
 

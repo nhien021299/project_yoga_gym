@@ -1,6 +1,7 @@
-import 'exercise_controller.dart';
-import '../model/exercise.dart';
 import 'package:get/get.dart';
+
+import '../model/exercise.dart';
+import 'exercise_controller.dart';
 
 class HistoryController extends GetxController {
   final ExerciseController exerciseController = Get.find();

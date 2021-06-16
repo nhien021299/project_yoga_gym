@@ -1,6 +1,6 @@
-import '../model/exercise.dart';
 import 'package:get/get.dart';
 
+import '../model/exercise.dart';
 import 'exercise_controller.dart';
 
 class FavoriteController extends GetxController {

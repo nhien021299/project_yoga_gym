@@ -1,8 +1,8 @@
-import '../../controller/favorite_controller.dart';
-import '../../utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controller/favorite_controller.dart';
+import '../../utils/constant.dart';
 import '../../widget/default_layout.dart';
 import '../../widget/exercises_item_widget.dart';
 

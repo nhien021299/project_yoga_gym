@@ -1,10 +1,10 @@
-import '../../controller/history_controller.dart';
-import '../exercise_video/exercise_video_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controller/history_controller.dart';
 import '../../widget/default_layout.dart';
 import '../../widget/exercises_item_widget.dart';
+import '../exercise_video/exercise_video_page.dart';
 import 'widgets/day_in_week_card.dart';
 import 'widgets/progress_bar.dart';
 

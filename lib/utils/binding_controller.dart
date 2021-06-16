@@ -1,5 +1,6 @@
-import '../controller/exercise_controller.dart';
 import 'package:get/instance_manager.dart';
+
+import '../controller/exercise_controller.dart';
 
 class BindingController extends Bindings {
   @override

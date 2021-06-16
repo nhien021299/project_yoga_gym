@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:fitness_app_ii_example/data/exercise_data.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
