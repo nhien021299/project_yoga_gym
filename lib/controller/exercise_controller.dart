@@ -1,6 +1,5 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../page/exercise_video/exercise_video_page.dart';
 import 'package:get/get.dart';
 
 import '../data/exercise_data.dart';
