@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fitness_app_ii_example/data/exercise_data.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -31,6 +32,7 @@ class Data {
     Directory directory = await getApplicationDocumentsDirectory();
     String dbPath = join(directory.path, 'exercise.db');
     // await deleteDatabase(dbPath);
+
     var database = openDatabase(dbPath,
         version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
 

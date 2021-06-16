@@ -28,6 +28,8 @@ class HistoryController extends GetxController {
         .getAllExerciseHistory()
         .then((value) => histories.value = value);
     print(filteredHistories.length);
+    getTotalPoint();
+    print("total point = ${totalPoint.value}");
     update();
   }
 

@@ -77,7 +77,7 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
               SizedBox(height: 16),
               ProgressBar(
-                currentPoint: historyController.getTotalPoint(),
+                currentPoint: historyController.totalPoint.value,
                 maxPoint: 2000,
               ),
               SizedBox(height: 16),
