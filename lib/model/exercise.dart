@@ -1,7 +1,7 @@
 class Exercise {
   final String id;
   final String name;
-  final Duration duration;
+  final int kcal;
   final int reps;
   final String videoUrl;
   final String imageUrl;
@@ -16,7 +16,7 @@ class Exercise {
     this.point,
     this.id,
     this.name,
-    this.duration,
+    this.kcal,
     this.reps,
     this.videoUrl,
     this.imageUrl,
@@ -24,20 +24,10 @@ class Exercise {
   });
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
-    // final raws = json['product'];
-    // Product orderProducts = ;
-
-    // if (raws != null && raws is List && raws.isNotEmpty) {
-    //   orderProducts = [];
-    //   raws.forEach((rawI) {
-    //     final orderProduct = Product.fromJson(rawI);
-    //     orderProducts.add(orderProduct);
-    //   });
-    // }
     return Exercise(
       id: (json['id'].toString()) ?? null,
       name: json['name'] ?? null,
-      // duration: (json['duration']) ?? null,
+      kcal: json['kcal'] ?? null,
       reps: json["reps"] ?? null,
       imageUrl: json["imageUrl"] ?? null,
       videoUrl: json["videoUrl"] ?? null,
@@ -55,6 +45,7 @@ class Exercise {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
         'reps': reps,
+        'kcal': kcal,
         'createdAt': createdAt.toIso8601String(),
         'point': point,
         'imageUrl': imageUrl,

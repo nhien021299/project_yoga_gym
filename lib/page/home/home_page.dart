@@ -1,3 +1,4 @@
+import 'package:fitness_app_ii_example/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,8 +6,23 @@ import '../../widget/default_layout.dart';
 import '../../widget/exercise_set_item_widget.dart';
 import 'widgets/activity_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  HomeController homeController = Get.put(HomeController());
+
+  @override
+  void initState() {
+    setState(() {
+      homeController.loadData();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +64,22 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 12),
-                  ActivityCard(
-                    value: "35",
-                    unit: "exercises",
-                    chartImage: 'assets/icons/line_chart.png',
-                    unitIcon: 'assets/icons/exercise.png',
+                  Obx(
+                    () => ActivityCard(
+                      value: homeController?.totalExercises?.value ?? 0,
+                      unit: "exercises",
+                      chartImage: 'assets/icons/line_chart.png',
+                      unitIcon: 'assets/icons/exercise.png',
+                    ),
                   ),
                   SizedBox(height: 12),
-                  ActivityCard(
-                    value: "960",
-                    unit: "calories",
-                    chartImage: 'assets/icons/line_chart.png',
-                    unitIcon: 'assets/icons/fire.png',
+                  Obx(
+                    () => ActivityCard(
+                      value: homeController?.totalKcal?.value ?? 0,
+                      unit: "calories",
+                      chartImage: 'assets/icons/line_chart.png',
+                      unitIcon: 'assets/icons/fire.png',
+                    ),
                   ),
                   SizedBox(height: 12),
                   Text(

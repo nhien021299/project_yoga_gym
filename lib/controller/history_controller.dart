@@ -28,7 +28,6 @@ class HistoryController extends GetxController {
     await exerciseController.dbExercise
         .getAllExerciseHistory()
         .then((value) => histories.value = value);
-    print(filteredHistories.length);
     getTotalPoint();
     update();
   }

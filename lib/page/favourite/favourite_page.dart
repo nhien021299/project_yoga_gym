@@ -46,26 +46,20 @@ class FavouritePage extends StatelessWidget {
                                 children: List.generate(
                                   controller.favourites.value.length,
                                   (index) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: defaultPadding),
+                                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                                     child: GestureDetector(
-                                      onTap: () => controller.exerciseController
-                                          .playVideo(controller
-                                              .favourites.value[index]),
+                                      onTap: () => controller.exerciseController.playVideo(controller.favourites.value[index]),
                                       child: ExercisesItemWidget(
-                                        image: controller
-                                            .favourites.value[index].imageUrl,
-                                        title: controller
-                                            .favourites.value[index].name,
-                                        value: controller
-                                            .favourites.value[index].reps,
-                                        isFavorite: controller.favourites
-                                            .value[index].isFavourite,
-                                        onTap: () => controller
-                                            .exerciseController
-                                            .updateFavorites(
-                                          controller.favourites.value[index],
-                                        ),
+                                        image: controller.favourites.value[index].imageUrl,
+                                        title: controller.favourites.value[index].name,
+                                        value: controller.favourites.value[index].reps,
+                                        isFavorite: controller.favourites.value[index].isFavourite,
+                                        onTap: () {
+                                          controller.exerciseController.updateFavorites(
+                                            controller.favourites.value[index],
+                                          );
+                                          controller.loadData();
+                                        },
                                       ),
                                     ),
                                   ),

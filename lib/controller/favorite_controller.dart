@@ -19,7 +19,6 @@ class FavoriteController extends GetxController {
     if (exerciseController.exercises.isNotEmpty) {
       final result = exerciseController.exercises;
       favourites.value = result.where((e) => e.isFavourite).toList();
-      print(favourites.value.length);
     }
     update();
   }

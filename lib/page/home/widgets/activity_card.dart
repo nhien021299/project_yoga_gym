@@ -9,7 +9,7 @@ class ActivityCard extends StatelessWidget {
     @required this.unitIcon,
   }) : super(key: key);
 
-  final String value;
+  final int value;
   final String unit;
   final String chartImage;
   final String unitIcon;
@@ -30,7 +30,7 @@ class ActivityCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    value,
+                    value.toString(),
                     style: Theme.of(context).textTheme.headline3.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
