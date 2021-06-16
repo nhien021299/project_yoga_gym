@@ -17,7 +17,7 @@ class HistoryController extends GetxController {
 
   @override
   void onInit() {
-    loadData();
+    // loadData();
     super.onInit();
   }
 
@@ -28,8 +28,7 @@ class HistoryController extends GetxController {
         .getAllExerciseHistory()
         .then((value) => histories.value = value);
     print(filteredHistories.length);
-    getTotalPoint();
-    print("total point = ${totalPoint.value}");
+
     update();
   }
 
@@ -42,6 +41,7 @@ class HistoryController extends GetxController {
   }
 
   int getTotalPoint() {
+    totalPoint.value = 0;
     filteredHistories.forEach((e) {
       if (DateTime.now().difference(e.createdAt).inDays < 7) {
         totalPoint.value += e.point;

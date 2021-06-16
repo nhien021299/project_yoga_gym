@@ -17,6 +17,13 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   HistoryController historyController = Get.put(HistoryController());
+  @override
+  void initState() {
+    setState(() {
+      historyController.loadData();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +84,7 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
               SizedBox(height: 16),
               ProgressBar(
-                currentPoint: historyController.totalPoint.value,
+                currentPoint: historyController.getTotalPoint(),
                 maxPoint: 2000,
               ),
               SizedBox(height: 16),

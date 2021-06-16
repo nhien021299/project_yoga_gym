@@ -60,6 +60,6 @@ class Exercise {
         'imageUrl': imageUrl,
         'videoUrl': videoUrl,
         'type': type,
-        'isFavourite': isFavourite,
+        'isFavourite': isFavourite ? 1 : 0,
       };
 }

@@ -63,11 +63,11 @@ class ExerciseController extends GetxController {
 
   void playVideo(Exercise exercise) async {
     await dbExercise.add(parameter: exercise, table: tableHistoryText);
-    Get.to(
-      ExerciseVideoPage(
-        exercise: exercise,
-      ),
-    );
+    // Get.to(
+    //   ExerciseVideoPage(
+    //     exercise: exercise,
+    //   ),
+    // );
   }
 
   void checkTableEmpty() async {

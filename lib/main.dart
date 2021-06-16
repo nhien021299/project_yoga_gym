@@ -19,6 +19,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Data dbExercise;
+  @override
+  void initState() {
+    dbExercise = Data();
+    super.initState();
+  }
+
   @override
   void dispose() {
     Data().closeDb();
