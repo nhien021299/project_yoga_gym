@@ -5,22 +5,21 @@ import 'exercise_controller.dart';
 
 class FavoriteController extends GetxController {
   //Init
-  var listFavorites = Rx<List<Exercise>>([]);
+  var favourites = Rx<List<Exercise>>([]);
   ExerciseController exerciseController = Get.find();
+
   @override
   void onInit() async {
-    await getListFavorites();
+    await loadData();
     super.onInit();
   }
 
   //Function
-  getListFavorites() {
-    print(exerciseController.exercises.length);
+  loadData() {
     if (exerciseController.exercises.isNotEmpty) {
-      var listExercise = exerciseController.exercises;
-      listFavorites.value = listExercise.where((e) => e.isFavourite).toList();
-
-      print(listFavorites.value);
+      final result = exerciseController.exercises;
+      favourites.value = result.where((e) => e.isFavourite).toList();
+      print(favourites.value.length);
     }
     update();
   }

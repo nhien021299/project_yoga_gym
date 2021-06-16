@@ -98,7 +98,7 @@ class Data {
     return exercises;
   }
 
-  Future getAllExerciseHistory() async {
+  Future<List<Exercise>> getAllExerciseHistory() async {
     var client = await db;
     var res = await client.query(tableHistoryText);
 

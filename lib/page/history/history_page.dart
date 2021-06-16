@@ -1,4 +1,5 @@
 import 'package:fitness_app_ii_example/controller/history_controller.dart';
+import 'package:fitness_app_ii_example/page/exercise_video/exercise_video_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,22 +16,10 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  final now = DateTime.now();
-  final _selectedDay = Rx<DateTime>(DateTime.now());
+  HistoryController historyController = Get.find();
 
-  void onSelectedDay(DateTime dateTime) {
-    _selectedDay.value = dateTime;
-  }
-
-  bool equalsDate(DateTime a, DateTime b) {
-    return a.day == b.day && a.month == b.month && a.year == b.year;
-  }
-
-  final HistoryController historyController = Get.put(HistoryController());
   @override
   Widget build(BuildContext context) {
-    List<DateTime> listDateTime = List<DateTime>.generate(
-        7, (index) => now.subtract(Duration(days: index)));
     return DefaultLayout(
       background: Image.asset(
         'assets/images/home_bg.png',
@@ -57,19 +46,17 @@ class _HistoryPageState extends State<HistoryPage> {
               SizedBox(
                 height: 70,
                 child: ListView.builder(
-                  physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics()),
+                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                   reverse: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: listDateTime?.length,
+                  itemCount: historyController.listDateTime?.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Obx(
                       () => GestureDetector(
-                        onTap: () => onSelectedDay(listDateTime[index]),
+                        onTap: () => historyController.onSelectedDay(historyController.listDateTime[index]),
                         child: DayInWeekCard(
-                          dateTime: listDateTime[index],
-                          isSelected: equalsDate(
-                              listDateTime[index], _selectedDay.value),
+                          dateTime: historyController.listDateTime[index],
+                          isSelected: historyController.equalsDate(historyController.listDateTime[index], historyController.selectedDay.value),
                         ),
                       ),
                     );
@@ -85,40 +72,42 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
               ),
               SizedBox(height: 16),
-              Obx(
-                () => ProgressBar(
-                  currentPoint: 1700,
-                  maxPoint: 2000,
-                ),
+              ProgressBar(
+                currentPoint: historyController.getTotalPoint(),
+                maxPoint: 2000,
               ),
               SizedBox(height: 16),
               Expanded(
-                child: SingleChildScrollView(
-                    child: Column(
-                  children: [
-                    ExercisesItemWidget(
-                        image: "assets/images/category_work_out.png",
-                        title: "Work Out 1",
-                        value: 15),
-                    Divider(
-                      height: 32,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: SizedBox(
+                    child: GetX<HistoryController>(
+                      init: HistoryController(),
+                      builder: (controller) {
+                        return ListView.builder(
+                          itemCount: controller.filteredHistories.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              onTap: () => Get.to(ExerciseVideoPage(
+                                exercise: controller.filteredHistories[index],
+                              )),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                child: ExercisesItemWidget(
+                                  image: controller.filteredHistories[index].imageUrl,
+                                  title: controller.filteredHistories[index].name,
+                                  value: controller.filteredHistories[index].reps,
+                                  isFavorite: controller.filteredHistories[index].isFavourite,
+                                  isHistory: true,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
-                    ExercisesItemWidget(
-                        image: "assets/images/workout2.png",
-                        title: "Work Out 2",
-                        value: 15),
-                    Divider(
-                      height: 32,
-                    ),
-                    ExercisesItemWidget(
-                        image: "assets/images/workout3.png",
-                        title: "Work Out 3",
-                        value: 15),
-                    Divider(
-                      height: 32,
-                    ),
-                  ],
-                )),
+                  ),
+                ),
               ),
             ],
           ),

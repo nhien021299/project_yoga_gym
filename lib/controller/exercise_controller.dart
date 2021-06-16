@@ -26,9 +26,7 @@ class ExerciseController extends GetxController {
 
   set selectedType(String type) => _selectedType.value = type;
 
-  List<Exercise> get filteredExercise => _exercises
-      .where((element) => element.type == _selectedType.value)
-      .toList();
+  List<Exercise> get filteredExercise => _exercises.where((element) => element.type == _selectedType.value).toList();
 
   void deleteExercise(int id) async {
     await dbExercise.remove(id: id, table: tableExerciseText);
@@ -54,18 +52,17 @@ class ExerciseController extends GetxController {
   }
 
   Future<int> addHistory(Exercise exercise) async {
-    return await dbExercise.add(parameter: exercise, table: tableHistoryText);
+    final result = await dbExercise.add(parameter: exercise, table: tableHistoryText);
+    return result;
   }
 
   void updateFavorites(Exercise exercise) async {
-    await dbExercise
-        .updateFavorites(parameter: exercise, table: tableExerciseText)
-        .then((value) => print(value));
+    await dbExercise.updateFavorites(parameter: exercise, table: tableExerciseText).then((value) => print(value));
     getAllList();
   }
 
   void playVideo(Exercise exercise) async {
-    await addHistory(exercise).then((value) => print(value));
+    await dbExercise.add(parameter: exercise, table: tableHistoryText);
     Get.to(
       ExerciseVideoPage(
         exercise: exercise,

@@ -1,6 +1,6 @@
 import 'package:fitness_app_ii_example/controller/favorite_controller.dart';
-import 'package:fitness_app_ii_example/page/exercise_video/exercise_video_page.dart';
 import 'package:fitness_app_ii_example/utils/constant.dart';
+import 'package:fitness_app_ii_example/utils/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +9,7 @@ import '../../widget/exercises_item_widget.dart';
 
 class FavouritePage extends StatelessWidget {
   FavouritePage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
@@ -44,27 +45,19 @@ class FavouritePage extends StatelessWidget {
                             builder: (controller) {
                               return Column(
                                 children: List.generate(
-                                  controller.listFavorites.value.length,
+                                  controller.favourites.value.length,
                                   (index) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: defaultPadding),
+                                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                                     child: GestureDetector(
-                                      onTap: () => controller.exerciseController
-                                          .playVideo(controller
-                                              .listFavorites.value[index]),
+                                      onTap: () => controller.exerciseController.playVideo(controller.favourites.value[index]),
                                       child: ExercisesItemWidget(
-                                        image: controller.listFavorites
-                                            .value[index].imageUrl,
-                                        title: controller
-                                            .listFavorites.value[index].name,
-                                        value: controller
-                                            .listFavorites.value[index].reps,
-                                        isFavorite: controller.listFavorites
-                                            .value[index].isFavourite,
-                                        onTap: () => controller
-                                            .exerciseController
-                                            .updateFavorites(controller
-                                                .listFavorites.value[index]),
+                                        image: controller.favourites.value[index].imageUrl,
+                                        title: controller.favourites.value[index].name,
+                                        value: controller.favourites.value[index].reps,
+                                        isFavorite: controller.favourites.value[index].isFavourite,
+                                        onTap: () => controller.exerciseController.updateFavorites(
+                                          controller.favourites.value[index],
+                                        ),
                                       ),
                                     ),
                                   ),

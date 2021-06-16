@@ -29,7 +29,7 @@ class ProgressBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              1750.toString() + " pts",
+              "$currentPoint pts",
               style: Theme.of(context).textTheme.bodyText1.copyWith(
                 color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold,

@@ -9,12 +9,13 @@ class ExercisesItemWidget extends StatelessWidget {
     this.unit,
     this.onTap,
     this.isFavorite = false,
+    this.isHistory = false,
   }) : super(key: key);
 
   final String image, title, unit;
   final int value;
   final Function onTap;
-  final bool isFavorite;
+  final bool isFavorite, isHistory;
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +61,17 @@ class ExercisesItemWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: GestureDetector(
-                    onTap: onTap ?? null,
-                    child: Icon(
-                      Icons.star_rounded,
-                      color: isFavorite
-                          ? Theme.of(context).primaryColor
-                          : Colors.black,
+                if (!isHistory)
+                  Expanded(
+                    flex: 1,
+                    child: GestureDetector(
+                      onTap: onTap ?? null,
+                      child: Icon(
+                        Icons.star_rounded,
+                        color: isFavorite ? Theme.of(context).primaryColor : Colors.black,
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
