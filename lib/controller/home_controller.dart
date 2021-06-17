@@ -11,21 +11,27 @@ class HomeController extends GetxController {
   final totalKcal = Rx<int>();
   final totalExercises = Rx<int>();
 
-  List<Exercise> get dailyActivities => histories.value.where((element) => equalsDate(element.createdAt, DateTime.now())).toList();
+  List<Exercise> get dailyActivities => histories.value
+      .where((element) => equalsDate(element.createdAt, DateTime.now()))
+      .toList();
 
   List<Exercise> exerciseByExerciseSetId(int exerciseSetId) {
-    final result = customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
+    final result =
+        customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
     return result;
   }
 
   @override
   void onInit() {
+    loadData();
     super.onInit();
   }
 
   void loadData() async {
-    histories.value.assignAll(await exerciseController.dbExercise.getExerciseHistories());
-    customExercises.assignAll(await exerciseController.dbExercise.getCustomExercises());
+    histories.value
+        .assignAll(await exerciseController.dbExercise.getExerciseHistories());
+    customExercises
+        .assignAll(await exerciseController.dbExercise.getCustomExercises());
     getTotalValue();
     update();
   }

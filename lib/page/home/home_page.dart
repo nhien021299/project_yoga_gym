@@ -113,8 +113,13 @@ class _HomePageState extends State<HomePage> {
                             final filteredCustomExercise =
                                 homeController.exerciseByExerciseSetId(100)[i];
                             return GestureDetector(
-                              onTap: () => homeController.exerciseController
-                                  .playVideo(filteredCustomExercise),
+                              onTap: () {
+                                homeController.exerciseController
+                                    .playVideo(filteredCustomExercise);
+                                setState(() {
+                                  homeController.loadData();
+                                });
+                              },
                               child: ExerciseSetItemWidget(
                                   imageUrl: filteredCustomExercise.imageUrl),
                             );
