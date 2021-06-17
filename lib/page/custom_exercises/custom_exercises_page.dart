@@ -78,7 +78,9 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                                           customController.exerciseByExerciseSetId(customController.exerciseSets[index].id)[i];
                                       return GestureDetector(
                                         onTap: () => customController.exerciseController.playVideo(filteredCustomExercise),
-                                        child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
+                                        child: customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).isNotEmpty
+                                            ? ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl)
+                                            : Text('No data'),
                                       );
                                     },
                                   ),
@@ -92,7 +94,7 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                   ),
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () => customController.openAddDialog(),
                   backgroundColor: Theme.of(context).primaryColor,
                   child: Icon(
                     Icons.add,
