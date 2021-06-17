@@ -34,7 +34,8 @@ class CustomController extends GetxController {
   int exerciseSetId;
 
   List<Exercise> exerciseByExerciseSetId(int exerciseSetId) {
-    final result = customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
+    final result =
+        customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
     return result;
   }
 
@@ -70,31 +71,35 @@ class CustomController extends GetxController {
     setNameController.clear();
   }
 
+  void updateExerciseSet(ExerciseSet exerciseSet) async {
+    await dbExercise.update(
+        parameter: exerciseSet, table: tableExerciseSetText);
+    loadData();
+    setNameController.clear();
+  }
+
   Future<int> addHistory(Exercise exercise) async {
-    final result = await dbExercise.add(parameter: exercise, table: tableHistoryText);
+    final result =
+        await dbExercise.add(parameter: exercise, table: tableHistoryText);
     return result;
   }
 
-  void openAddDialog() {
+  void openDialog(
+      {@required String title,
+      @required String hintText,
+      @required Function onClick}) {
     Get.dialog(
       DialogWidget(
-        title: "Add new Exercise Set",
+        title: title,
         widget: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
           child: InputWidget(
             inputType: TextInputType.text,
             controller: setNameController,
-            hintText: "Enter set name",
+            hintText: hintText,
           ),
         ),
-        onSubmitClicked: () {
-          if (setNameController.text.isNotEmpty) {
-            addExerciseSet(ExerciseSet(name: setNameController.text));
-            Get.back();
-          } else {
-            print('Name is empty');
-          }
-        },
+        onSubmitClicked: onClick,
         onCancel: () {
           setNameController.clear();
           Get.back();
@@ -117,19 +122,23 @@ class CustomController extends GetxController {
               itemBuilder: (BuildContext context, int index) {
                 return Obx(
                   () => GestureDetector(
-                    onTap: () => selectedExercise.value = exerciseController.exercises[index],
+                    onTap: () => selectedExercise.value =
+                        exerciseController.exercises[index],
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 16),
                       child: ExercisesItemWidget(
                         image: exerciseController.exercises[index].imageUrl,
                         title: exerciseController.exercises[index].name,
                         value: exerciseController.exercises[index].reps,
-                        isFavorite: exerciseController.exercises[index].isFavourite,
+                        isFavorite:
+                            exerciseController.exercises[index].isFavourite,
                         showFavourite: true,
                         onTap: () => exerciseController.updateFavorites(
                           exerciseController.exercises[index],
                         ),
-                        isSelected: selectedExercise.value == exerciseController.exercises[index],
+                        isSelected: selectedExercise.value ==
+                            exerciseController.exercises[index],
                       ),
                     ),
                   ),

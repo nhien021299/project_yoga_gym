@@ -33,7 +33,8 @@ class Data {
     String dbPath = join(directory.path, 'exercise.db');
     // await deleteDatabase(dbPath);
 
-    var database = openDatabase(dbPath, version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    var database = openDatabase(dbPath,
+        version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
 
     return database;
   }
@@ -94,12 +95,14 @@ class Data {
 
   Future<int> add({@required var parameter, @required String table}) async {
     var client = await db;
-    return client.insert(table, parameter.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
+    return client.insert(table, parameter.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<Exercise> getOneExercise(int id) async {
     var client = await db;
-    final Future<List<Map<String, dynamic>>> futureMaps = client.query(tableExerciseText, where: 'id = ?', whereArgs: [id]);
+    final Future<List<Map<String, dynamic>>> futureMaps =
+        client.query(tableExerciseText, where: 'id = ?', whereArgs: [id]);
     var maps = await futureMaps;
 
     if (maps.length != 0) {
@@ -155,13 +158,19 @@ class Data {
 
   Future<int> update({@required var parameter, @required String table}) async {
     var client = await db;
-    return client.update(table, parameter.toJson(), where: 'id = ?', whereArgs: [parameter.id], conflictAlgorithm: ConflictAlgorithm.replace);
+    return client.update(table, parameter.toJson(),
+        where: 'id = ?',
+        whereArgs: [parameter.id],
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<int> updateFavorites({@required var parameter, @required String table}) async {
+  Future<int> updateFavorites(
+      {@required var parameter, @required String table}) async {
     var client = await db;
     return client.update(table, {'isFavourite': !parameter.isFavourite},
-        where: 'id = ?', whereArgs: [parameter.id], conflictAlgorithm: ConflictAlgorithm.replace);
+        where: 'id = ?',
+        whereArgs: [parameter.id],
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> remove({@required int id, @required String table}) async {

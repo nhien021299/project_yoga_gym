@@ -1,7 +1,5 @@
 import '../model/exercise.dart';
 
-import '../model/exercise_set.dart';
-
 final defaultCustomExercise = [
   Exercise(
     exerciseSetId: 100,

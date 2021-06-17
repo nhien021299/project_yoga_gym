@@ -97,21 +97,29 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.normal,
                         ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: SizedBox(
-                      height: 100,
-                      child: ListView.builder(
-                        physics: ScrollPhysics(parent: BouncingScrollPhysics()),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: homeController.exerciseByExerciseSetId(100).length,
-                        itemBuilder: (BuildContext context, int i) {
-                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(100)[i];
-                          return GestureDetector(
-                            onTap: () => homeController.exerciseController.playVideo(filteredCustomExercise),
-                            child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
-                          );
-                        },
+                  Obx(
+                    () => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          physics:
+                              ScrollPhysics(parent: BouncingScrollPhysics()),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: homeController
+                              .exerciseByExerciseSetId(100)
+                              .length,
+                          itemBuilder: (BuildContext context, int i) {
+                            final filteredCustomExercise =
+                                homeController.exerciseByExerciseSetId(100)[i];
+                            return GestureDetector(
+                              onTap: () => homeController.exerciseController
+                                  .playVideo(filteredCustomExercise),
+                              child: ExerciseSetItemWidget(
+                                  imageUrl: filteredCustomExercise.imageUrl),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -123,21 +131,29 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.normal,
                         ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: SizedBox(
-                      height: 100,
-                      child: ListView.builder(
-                        physics: ScrollPhysics(parent: BouncingScrollPhysics()),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: homeController.exerciseByExerciseSetId(200).length,
-                        itemBuilder: (BuildContext context, int i) {
-                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(200)[i];
-                          return GestureDetector(
-                            onTap: () => homeController.exerciseController.playVideo(filteredCustomExercise),
-                            child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
-                          );
-                        },
+                  Obx(
+                    () => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          physics:
+                              ScrollPhysics(parent: BouncingScrollPhysics()),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: homeController
+                              .exerciseByExerciseSetId(200)
+                              .length,
+                          itemBuilder: (BuildContext context, int i) {
+                            final filteredCustomExercise =
+                                homeController.exerciseByExerciseSetId(200)[i];
+                            return GestureDetector(
+                              onTap: () => homeController.exerciseController
+                                  .playVideo(filteredCustomExercise),
+                              child: ExerciseSetItemWidget(
+                                  imageUrl: filteredCustomExercise.imageUrl),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -150,7 +166,10 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 "GOOD",
-                                style: Theme.of(context).textTheme.headline3.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline3
+                                    .copyWith(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -173,11 +192,16 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_rounded, color: Theme.of(context).primaryColor),
-                              Icon(Icons.star_half_rounded, color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_rounded,
+                                  color: Theme.of(context).primaryColor),
+                              Icon(Icons.star_half_rounded,
+                                  color: Theme.of(context).primaryColor),
                             ],
                           ),
                         ),
