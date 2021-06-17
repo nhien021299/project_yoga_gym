@@ -1,4 +1,4 @@
-// import 'package:fitness_app_ii_example/data/exercise_sets_data.dart';
+// import 'package:fitness_app_ii_example/data/custom_exercise_data.dart';
 // import 'package:fitness_app_ii_example/dbhelper/init_db_helper.dart';
 // import 'package:fitness_app_ii_example/model/exercise_set.dart';
 // import 'package:fitness_app_ii_example/utils/string_constant.dart';

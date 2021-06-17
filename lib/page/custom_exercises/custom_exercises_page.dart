@@ -1,11 +1,19 @@
+import 'package:fitness_app_ii_example/controller/custom_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../widget/default_layout.dart';
 import '../../widget/exercise_set_item_widget.dart';
 
-class CustomExercisesPage extends StatelessWidget {
+class CustomExercisesPage extends StatefulWidget {
   const CustomExercisesPage({Key key}) : super(key: key);
+
+  @override
+  _CustomExercisesPageState createState() => _CustomExercisesPageState();
+}
+
+class _CustomExercisesPageState extends State<CustomExercisesPage> {
+  CustomController customController = Get.put(CustomController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +35,9 @@ class CustomExercisesPage extends StatelessWidget {
                 Text(
                   "Customized",
                   style: Theme.of(context).textTheme.headline4.copyWith(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 SizedBox(height: 12),
                 Text(
@@ -42,58 +50,44 @@ class CustomExercisesPage extends StatelessWidget {
                 Divider(height: 50),
                 Expanded(
                   child: SizedBox(
-                    child: ListView(
-                      children: [
-                        // buildWorkouts(),
-                        // Exercise Set
-                        Text(
-                          "Customized set 1",
-                          style: Theme.of(context).textTheme.headline6.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal,
+                    child: Obx(
+                      () => ListView.builder(
+                        physics: ScrollPhysics(parent: BouncingScrollPhysics()),
+                        itemCount: customController.exerciseSets.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                customController.exerciseSets[index].name.toString(),
+                                style: Theme.of(context).textTheme.headline6.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                               ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: SizedBox(
-                            height: 100,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Divider(height: 32),
-                        Text(
-                          "Customized set 2",
-                          style: Theme.of(context).textTheme.headline6.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                child: SizedBox(
+                                  height: 100,
+                                  child: ListView.builder(
+                                    physics: ScrollPhysics(parent: BouncingScrollPhysics()),
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).length,
+                                    itemBuilder: (BuildContext context, int i) {
+                                      final filteredCustomExercise =
+                                          customController.exerciseByExerciseSetId(customController.exerciseSets[index].id)[i];
+                                      return GestureDetector(
+                                        onTap: () => customController.exerciseController.playVideo(filteredCustomExercise),
+                                        child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
+                                      );
+                                    },
+                                  ),
+                                ),
                               ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: SizedBox(
-                            height: 100,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                                ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),

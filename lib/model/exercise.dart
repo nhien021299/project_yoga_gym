@@ -1,5 +1,6 @@
 class Exercise {
-  final String id;
+  final int id;
+  final int exerciseSetId;
   final String name;
   final int kcal;
   final int reps;
@@ -21,11 +22,13 @@ class Exercise {
     this.videoUrl,
     this.imageUrl,
     this.isFavourite = false,
+    this.exerciseSetId,
   });
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
     return Exercise(
-      id: (json['id'].toString()) ?? null,
+      id: json['id'] ?? null,
+      exerciseSetId: json['exerciseSetId'] ?? null,
       name: json['name'] ?? null,
       kcal: json['kcal'] ?? null,
       reps: json["reps"] ?? null,
@@ -37,12 +40,14 @@ class Exercise {
       isFavourite: json["isFavourite"] == null
           ? false
           : json["isFavourite"] == 1
-              ? true
-              : false,
+          ? true
+          : false,
     );
   }
 
-  Map<String, dynamic> toJson() => <String, dynamic>{
+  Map<String, dynamic> toJson() =>
+      <String, dynamic>{
+        'exerciseSetId': exerciseSetId,
         'name': name,
         'reps': reps,
         'kcal': kcal,

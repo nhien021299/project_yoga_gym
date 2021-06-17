@@ -1,3 +1,5 @@
+import '../data/custom_exercise_data.dart';
+
 import '../page/exercise_video/exercise_video_page.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -31,12 +33,12 @@ class ExerciseController extends GetxController {
 
   void deleteExercise(int id) async {
     await dbExercise.remove(id: id, table: tableExerciseText);
-    dbExercise.getAllExercise().then((e) => _exercises.assignAll(e));
+    dbExercise.getExercises().then((e) => _exercises.assignAll(e));
     update();
   }
 
   void getAllList() async {
-    _exercises.assignAll(await dbExercise.getAllExercise());
+    _exercises.assignAll(await dbExercise.getExercises());
     update();
   }
 
@@ -80,10 +82,19 @@ class ExerciseController extends GetxController {
     var db = await dbExercise.db;
 
     int count = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM exercise'));
+    int exerciseSetCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableExerciseSet'));
+    int customExerciseCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableCustomExercise'));
 
-    if (count == 0)
-      defaultExercise.forEach((e) {
-        dbExercise.add(parameter: e, table: tableExerciseText);
-      });
+    if (count == 0 && exerciseSetCount == 0 && customExerciseCount == 0) {
+      defaultExercise.forEach(
+        (e) => dbExercise.add(parameter: e, table: tableExerciseText),
+      );
+      defaultExerciseSets.forEach(
+        (e) => dbExercise.add(parameter: e, table: tableExerciseSetText),
+      );
+      defaultCustomExercise.forEach(
+        (e) => dbExercise.add(parameter: e, table: tableCustomExerciseText),
+      );
+    }
   }
 }

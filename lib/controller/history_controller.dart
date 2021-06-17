@@ -26,7 +26,7 @@ class HistoryController extends GetxController {
     listDateTime = List<DateTime>.generate(
         7, (index) => now.subtract(Duration(days: index)));
     await exerciseController.dbExercise
-        .getAllExerciseHistory()
+        .getExerciseHistories()
         .then((value) => histories.value = value);
     getTotalPoint();
     update();

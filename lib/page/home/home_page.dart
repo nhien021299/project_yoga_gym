@@ -101,15 +101,17 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: SizedBox(
                       height: 100,
-                      child: ListView(
+                      child: ListView.builder(
+                        physics: ScrollPhysics(parent: BouncingScrollPhysics()),
                         scrollDirection: Axis.horizontal,
-                        children: [
-                          ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                        ],
+                        itemCount: homeController.exerciseByExerciseSetId(1).length,
+                        itemBuilder: (BuildContext context, int i) {
+                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(1)[i];
+                          return GestureDetector(
+                            onTap: () => homeController.exerciseController.playVideo(filteredCustomExercise),
+                            child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -125,15 +127,17 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: SizedBox(
                       height: 100,
-                      child: ListView(
+                      child: ListView.builder(
+                        physics: ScrollPhysics(parent: BouncingScrollPhysics()),
                         scrollDirection: Axis.horizontal,
-                        children: [
-                          ExerciseSetItemWidget(imageUrl: "assets/images/category_work_out.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout2.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/workout3.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                          ExerciseSetItemWidget(imageUrl: "assets/images/crunch.png"),
-                        ],
+                        itemCount: homeController.exerciseByExerciseSetId(1).length,
+                        itemBuilder: (BuildContext context, int i) {
+                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(2)[i];
+                          return GestureDetector(
+                            onTap: () => homeController.exerciseController.playVideo(filteredCustomExercise),
+                            child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
+                          );
+                        },
                       ),
                     ),
                   ),

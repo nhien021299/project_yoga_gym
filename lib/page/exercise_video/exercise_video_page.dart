@@ -86,6 +86,47 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                   ),
                 ),
                 player,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  child: Text(
+                    "Description",
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                        ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ListView(
+                      children: [
+                        Text(
+                          "- Reps: ${currentExercise.reps} times",
+                          style: Theme.of(context).textTheme.headline5.copyWith(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        Text(
+                          "- Calories: ${currentExercise.kcal} kcal",
+                          style: Theme.of(context).textTheme.headline5.copyWith(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        Text(
+                          "- Point: ${currentExercise.point} pts",
+                          style: Theme.of(context).textTheme.headline5.copyWith(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             );
           },
