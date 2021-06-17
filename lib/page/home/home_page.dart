@@ -104,9 +104,9 @@ class _HomePageState extends State<HomePage> {
                       child: ListView.builder(
                         physics: ScrollPhysics(parent: BouncingScrollPhysics()),
                         scrollDirection: Axis.horizontal,
-                        itemCount: homeController.exerciseByExerciseSetId(1).length,
+                        itemCount: homeController.exerciseByExerciseSetId(100).length,
                         itemBuilder: (BuildContext context, int i) {
-                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(1)[i];
+                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(100)[i];
                           return GestureDetector(
                             onTap: () => homeController.exerciseController.playVideo(filteredCustomExercise),
                             child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
@@ -130,9 +130,9 @@ class _HomePageState extends State<HomePage> {
                       child: ListView.builder(
                         physics: ScrollPhysics(parent: BouncingScrollPhysics()),
                         scrollDirection: Axis.horizontal,
-                        itemCount: homeController.exerciseByExerciseSetId(1).length,
+                        itemCount: homeController.exerciseByExerciseSetId(200).length,
                         itemBuilder: (BuildContext context, int i) {
-                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(2)[i];
+                          final filteredCustomExercise = homeController.exerciseByExerciseSetId(200)[i];
                           return GestureDetector(
                             onTap: () => homeController.exerciseController.playVideo(filteredCustomExercise),
                             child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),

@@ -2,18 +2,9 @@ import '../model/exercise.dart';
 
 import '../model/exercise_set.dart';
 
-final defaultExerciseSets = [
-  ExerciseSet(
-    name: 'Workout basic',
-  ),
-  ExerciseSet(
-    name: 'Yoga basic',
-  ),
-];
-
 final defaultCustomExercise = [
   Exercise(
-    exerciseSetId: 1,
+    exerciseSetId: 100,
     name: "Squats",
     kcal: 36,
     reps: 20,
@@ -25,7 +16,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Lunges",
-    exerciseSetId: 1,
+    exerciseSetId: 100,
     kcal: 36,
     reps: 10,
     videoUrl: 'zaongQlYTto',
@@ -36,7 +27,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Hip Extensions",
-    exerciseSetId: 1,
+    exerciseSetId: 100,
     kcal: 36,
     reps: 10,
     videoUrl: 'XzSKVCEPV68',
@@ -47,7 +38,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Leg Swings",
-    exerciseSetId: 1,
+    exerciseSetId: 100,
     kcal: 36,
     reps: 20,
     videoUrl: 'WTKb4VkZYqI',
@@ -58,7 +49,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Push ups",
-    exerciseSetId: 1,
+    exerciseSetId: 100,
     kcal: 36,
     reps: 20,
     videoUrl: 'bt5b9x9N0KU',
@@ -69,7 +60,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Cobra Pose",
-    exerciseSetId: 2,
+    exerciseSetId: 200,
     kcal: 36,
     reps: 12,
     videoUrl: 'JDcdhTuycOI',
@@ -80,7 +71,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Tree Pose",
-    exerciseSetId: 2,
+    exerciseSetId: 200,
     kcal: 36,
     reps: 12,
     videoUrl: 'Fr5kiIygm0c',
@@ -91,7 +82,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Triangle Pose",
-    exerciseSetId: 2,
+    exerciseSetId: 200,
     kcal: 36,
     reps: 12,
     videoUrl: 'S6gB0QHbWFE',
@@ -102,7 +93,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Half-Spinal Twist Pose",
-    exerciseSetId: 2,
+    exerciseSetId: 200,
     kcal: 36,
     reps: 12,
     videoUrl: 'ciGK6HyYqV4',
@@ -113,7 +104,7 @@ final defaultCustomExercise = [
   ),
   Exercise(
     name: "Bridge Pose",
-    exerciseSetId: 2,
+    exerciseSetId: 200,
     kcal: 36,
     reps: 12,
     videoUrl: '0hlKymgBr2s',

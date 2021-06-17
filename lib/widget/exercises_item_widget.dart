@@ -1,3 +1,4 @@
+import 'package:fitness_app_ii_example/model/exercise.dart';
 import 'package:flutter/material.dart';
 
 class ExercisesItemWidget extends StatelessWidget {
@@ -9,28 +10,41 @@ class ExercisesItemWidget extends StatelessWidget {
     this.unit,
     this.onTap,
     this.isFavorite = false,
-    this.isHistory = false,
+    this.showFavourite = false,
+    this.isSelected = false,
+    this.callBack,
   }) : super(key: key);
 
   final String image, title, unit;
   final int value;
   final Function onTap;
-  final bool isFavorite, isHistory;
+  final Function(Exercise) callBack;
+  final bool isFavorite, showFavourite, isSelected;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: isSelected ? Colors.blue : Colors.transparent,
+      ),
       child: Row(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.width / 4,
-            width: MediaQuery.of(context).size.width / 4,
-            padding: EdgeInsets.all(16 / 2),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: MediaQuery.of(context).size.width / 4,
+              width: MediaQuery.of(context).size.width / 4,
+              padding: EdgeInsets.all(16 / 2),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Image.asset(
+                image,
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Image.asset(image),
           ),
           SizedBox(width: 16),
           Expanded(
@@ -61,7 +75,7 @@ class ExercisesItemWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (!isHistory)
+                if (!showFavourite)
                   Expanded(
                     flex: 1,
                     child: GestureDetector(

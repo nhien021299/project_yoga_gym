@@ -115,7 +115,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                       controller.filteredHistories[index].reps,
                                   isFavorite: controller
                                       .filteredHistories[index].isFavourite,
-                                  isHistory: true,
+                                  showFavourite: true,
                                 ),
                               ),
                             );

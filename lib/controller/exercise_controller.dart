@@ -89,9 +89,6 @@ class ExerciseController extends GetxController {
       defaultExercise.forEach(
         (e) => dbExercise.add(parameter: e, table: tableExerciseText),
       );
-      defaultExerciseSets.forEach(
-        (e) => dbExercise.add(parameter: e, table: tableExerciseSetText),
-      );
       defaultCustomExercise.forEach(
         (e) => dbExercise.add(parameter: e, table: tableCustomExerciseText),
       );

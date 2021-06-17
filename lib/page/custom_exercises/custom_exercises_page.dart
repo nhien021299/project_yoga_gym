@@ -56,36 +56,94 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                         itemCount: customController.exerciseSets.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Text(
-                                customController.exerciseSets[index].name.toString(),
-                                style: Theme.of(context).textTheme.headline6.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    customController.exerciseSets[index].name.toString(),
+                                    style: Theme.of(context).textTheme.headline6.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: customController.openChooseExerciseDialog,
+                                        icon: Icon(
+                                          Icons.add_circle_outline,
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.edit,
+                                        color: Colors.greenAccent,
+                                      ),
+                                      IconButton(
+                                        onPressed: () => customController.deleteExerciseSet(customController.exerciseSets[index].id),
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Color(0xFF909090),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                child: SizedBox(
-                                  height: 100,
-                                  child: ListView.builder(
-                                    physics: ScrollPhysics(parent: BouncingScrollPhysics()),
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).length,
-                                    itemBuilder: (BuildContext context, int i) {
-                                      final filteredCustomExercise =
-                                          customController.exerciseByExerciseSetId(customController.exerciseSets[index].id)[i];
-                                      return GestureDetector(
-                                        onTap: () => customController.exerciseController.playVideo(filteredCustomExercise),
-                                        child: customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).isNotEmpty
-                                            ? ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl)
-                                            : Text('No data'),
-                                      );
-                                    },
+                              if (customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).isNotEmpty)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  child: SizedBox(
+                                    height: 100,
+                                    child: ListView.builder(
+                                      physics: ScrollPhysics(parent: BouncingScrollPhysics()),
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).length,
+                                      itemBuilder: (BuildContext context, int i) {
+                                        final filteredCustomExercise =
+                                            customController.exerciseByExerciseSetId(customController.exerciseSets[index].id)[i];
+                                        return GestureDetector(
+                                          onTap: () => customController.exerciseController.playVideo(filteredCustomExercise),
+                                          onLongPress: () {
+                                            customController.deleteCustomExercise(filteredCustomExercise.id);
+                                            print('Delete');
+                                          },
+                                          child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
-                              ),
+                              if (customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).isEmpty)
+                                GestureDetector(
+                                  onTap: () {
+                                    customController.exerciseSetId = customController.exerciseSets[index].id;
+                                    customController.openChooseExerciseDialog();
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16),
+                                      child: Container(
+                                        height: 80,
+                                        width: 80,
+                                        padding: EdgeInsets.all(16 / 2),
+                                        decoration: BoxDecoration(
+                                            color: Colors.transparent,
+                                            borderRadius: BorderRadius.circular(16),
+                                            border: Border.all(
+                                              color: Color(0xFF909090),
+                                            )),
+                                        child: Icon(
+                                          Icons.add_rounded,
+                                          color: Color(0xFF909090),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              SizedBox(height: 18),
                             ],
                           );
                         },
