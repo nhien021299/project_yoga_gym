@@ -33,6 +33,7 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
         hideThumbnail: false,
         enableCaption: true,
         forceHD: true,
+        controlsVisibleAtStart: true,
       ),
     );
   }
@@ -60,65 +61,30 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
       ),
       body: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Color(0xFF4E1E46),
-          title: Text(
-            "Exercise Tutorial",
-            style: TextStyle(color: Colors.red),
-          ),
-        ),
         body: YoutubePlayerBuilder(
           player: YoutubePlayer(
             controller: _controller,
             showVideoProgressIndicator: true,
           ),
           builder: (context, player) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
-                  child: Text(
-                    currentExercise.name,
-                    style: Theme.of(context).textTheme.headline4.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ),
-                player,
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 18),
-                  child: Text(
-                    "Description",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic,
-                        ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: ListView(
+            return SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    child: Row(
                       children: [
-                        Text(
-                          "- Reps: ${currentExercise.reps} times",
-                          style: Theme.of(context).textTheme.headline5.copyWith(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
+                        IconButton(
+                          onPressed: () => Get.back(),
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         Text(
-                          "- Calories: ${currentExercise.kcal} kcal",
-                          style: Theme.of(context).textTheme.headline5.copyWith(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        Text(
-                          "- Point: ${currentExercise.point} pts",
-                          style: Theme.of(context).textTheme.headline5.copyWith(
+                          currentExercise.name,
+                          style: Theme.of(context).textTheme.headline4.copyWith(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -126,8 +92,51 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                       ],
                     ),
                   ),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: player,
+                  ),
+                  Text(
+                    "Description",
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                        ),
+                  ),
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                      children: [
+                        Text(
+                          "- Reps: ${currentExercise.reps} times",
+                          style: Theme.of(context).textTheme.headline5.copyWith(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: Text(
+                            "- Calories: ${currentExercise.kcal} kcal",
+                            style: Theme.of(context).textTheme.headline5.copyWith(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
+                        Text(
+                          "- Point: ${currentExercise.point} pts",
+                          style: Theme.of(context).textTheme.headline5.copyWith(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             );
           },
         ),

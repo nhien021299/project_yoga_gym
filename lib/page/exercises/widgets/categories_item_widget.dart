@@ -23,7 +23,7 @@ class _CategoriesItemWidgetState extends State<CategoriesItemWidget> {
           width: size.width * 0.4,
           height: size.height * 0.2,
           decoration: BoxDecoration(
-            color: widget.isSelected ? Colors.redAccent.withOpacity(0.8) : Colors.white,
+            color: widget.isSelected ? Colors.redAccent.withOpacity(0.8) : Colors.redAccent.withOpacity(0.3),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 bottomLeft: Radius.circular(20.0),

@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SizedBox(height: 12),
                       Text(
-                        "Daily Activity",
+                        "Daily Activities",
                         style: Theme.of(context).textTheme.headline5.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                   Obx(
                     () => ActivityCard(
                       value: homeController?.totalExercises?.value ?? 0,
-                      unit: "exercises",
+                      unit: "Exercises",
                       chartImage: 'assets/icons/line_chart.png',
                       unitIcon: 'assets/icons/exercise.png',
                     ),
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   Obx(
                     () => ActivityCard(
                       value: homeController?.totalKcal?.value ?? 0,
-                      unit: "calories",
+                      unit: "Calories",
                       chartImage: 'assets/icons/line_chart.png',
                       unitIcon: 'assets/icons/fire.png',
                     ),
