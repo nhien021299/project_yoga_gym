@@ -84,7 +84,7 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                         ),
                         Text(
                           currentExercise.name,
-                          style: Theme.of(context).textTheme.headline4.copyWith(
+                          style: Theme.of(context).textTheme.headline5.copyWith(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
