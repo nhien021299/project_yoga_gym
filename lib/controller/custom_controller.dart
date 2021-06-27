@@ -1,7 +1,7 @@
 import 'package:fitness_app_ii_example/widget/exercises_item_widget.dart';
 
 import '../controller/exercise_controller.dart';
-import '../page/custom_exercises/widgets/add_dialog.dart';
+import '../page/custom_exercises/widgets/dialog.dart';
 import '../page/custom_exercises/widgets/input_widget.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -34,8 +34,7 @@ class CustomController extends GetxController {
   int exerciseSetId;
 
   List<Exercise> exerciseByExerciseSetId(int exerciseSetId) {
-    final result =
-        customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
+    final result = customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
     return result;
   }
 
@@ -72,22 +71,17 @@ class CustomController extends GetxController {
   }
 
   void updateExerciseSet(ExerciseSet exerciseSet) async {
-    await dbExercise.update(
-        parameter: exerciseSet, table: tableExerciseSetText);
+    await dbExercise.update(parameter: exerciseSet, table: tableExerciseSetText);
     loadData();
     setNameController.clear();
   }
 
   Future<int> addHistory(Exercise exercise) async {
-    final result =
-        await dbExercise.add(parameter: exercise, table: tableHistoryText);
+    final result = await dbExercise.add(parameter: exercise, table: tableHistoryText);
     return result;
   }
 
-  void openDialog(
-      {@required String title,
-      @required String hintText,
-      @required Function onClick}) {
+  void onRenameExerciseSet({@required String title, @required String hintText, @required Function onClick}) {
     Get.dialog(
       DialogWidget(
         title: title,
@@ -109,7 +103,7 @@ class CustomController extends GetxController {
     );
   }
 
-  void openChooseExerciseDialog() {
+  void oneChooseExercise() {
     Get.dialog(
       DialogWidget(
         title: "Choose Exercise",
@@ -122,23 +116,19 @@ class CustomController extends GetxController {
               itemBuilder: (BuildContext context, int index) {
                 return Obx(
                   () => GestureDetector(
-                    onTap: () => selectedExercise.value =
-                        exerciseController.exercises[index],
+                    onTap: () => selectedExercise.value = exerciseController.exercises[index],
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 16, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                       child: ExercisesItemWidget(
                         image: exerciseController.exercises[index].imageUrl,
                         title: exerciseController.exercises[index].name,
                         value: exerciseController.exercises[index].reps,
-                        isFavorite:
-                            exerciseController.exercises[index].isFavourite,
+                        isFavorite: exerciseController.exercises[index].isFavourite,
                         showFavourite: true,
                         onTap: () => exerciseController.updateFavorites(
                           exerciseController.exercises[index],
                         ),
-                        isSelected: selectedExercise.value ==
-                            exerciseController.exercises[index],
+                        isSelected: selectedExercise.value == exerciseController.exercises[index],
                       ),
                     ),
                   ),
@@ -171,4 +161,32 @@ class CustomController extends GetxController {
       ),
     );
   }
+
+  void onDeleteExerciseSet(int exerciseSetId) => Get.dialog(
+        DialogWidget(
+          title: "Are you sure ?",
+          widget: SizedBox(height: 30),
+          onSubmitClicked: () {
+            deleteExerciseSet(exerciseSetId);
+            Get.back();
+          },
+          onCancel: () {
+            Get.back();
+          },
+        ),
+      );
+
+  void onDeleteExercise(int exerciseId) => Get.dialog(
+        DialogWidget(
+          title: "Are you sure ?",
+          widget: SizedBox(height: 30),
+          onSubmitClicked: () {
+            deleteCustomExercise(exerciseId);
+            Get.back();
+          },
+          onCancel: () {
+            Get.back();
+          },
+        ),
+      );
 }
