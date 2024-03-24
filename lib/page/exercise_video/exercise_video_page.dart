@@ -9,7 +9,7 @@ class ExerciseVideoPage extends StatefulWidget {
   final Exercise exercise;
 
   const ExerciseVideoPage({
-    this.exercise,
+    required this.exercise,
   });
 
   @override
@@ -17,15 +17,15 @@ class ExerciseVideoPage extends StatefulWidget {
 }
 
 class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
-  YoutubePlayerController _controller;
-  Exercise currentExercise;
+  late final YoutubePlayerController _controller;
+  late final Exercise currentExercise;
 
   @override
   void initState() {
     super.initState();
     currentExercise = widget.exercise;
     _controller = YoutubePlayerController(
-      initialVideoId: currentExercise.videoUrl,
+      initialVideoId: currentExercise.videoUrl ?? '',
       flags: YoutubePlayerFlags(
         autoPlay: true,
         mute: false,
@@ -72,7 +72,8 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 20),
                     child: Row(
                       children: [
                         IconButton(
@@ -83,8 +84,11 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                           ),
                         ),
                         Text(
-                          currentExercise.name,
-                          style: Theme.of(context).textTheme.headline5.copyWith(
+                          currentExercise.name ?? '',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -98,7 +102,7 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                   ),
                   Text(
                     "Description",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
@@ -106,11 +110,15 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                   ),
                   Expanded(
                     child: ListView(
-                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 20),
                       children: [
                         Text(
                           "- Reps: ${currentExercise.reps} times",
-                          style: Theme.of(context).textTheme.headline5.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -119,7 +127,10 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           child: Text(
                             "- Calories: ${currentExercise.kcal} kcal",
-                            style: Theme.of(context).textTheme.headline5.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -127,7 +138,10 @@ class _ExerciseVideoPageState extends State<ExerciseVideoPage> {
                         ),
                         Text(
                           "- Point: ${currentExercise.point} pts",
-                          style: Theme.of(context).textTheme.headline5.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.bold,
                               ),

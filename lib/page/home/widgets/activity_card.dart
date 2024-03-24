@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ActivityCard extends StatelessWidget {
   const ActivityCard({
-    Key key,
-    @required this.value,
-    @required this.unit,
-    @required this.chartImage,
-    @required this.unitIcon,
+    Key? key,
+    required this.value,
+    required this.unit,
+    required this.chartImage,
+    required this.unitIcon,
   }) : super(key: key);
 
   final int value;
@@ -31,11 +31,11 @@ class ActivityCard extends StatelessWidget {
                 children: [
                   Text(
                     value.toString(),
-                    style: Theme.of(context).textTheme.headline3.copyWith(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                      height: 1,
-                    ),
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                          height: 1,
+                        ),
                   ),
                   Text(
                     unit,

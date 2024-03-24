@@ -4,7 +4,7 @@ class TabItemWidget extends StatelessWidget {
   final String name;
   final IconData icon;
 
-  const TabItemWidget({this.icon, this.name});
+  const TabItemWidget({required this.icon, this.name = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TabItemWidget extends StatelessWidget {
               width: 10,
             ),
             Text(
-              name ?? "",
+              name,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,

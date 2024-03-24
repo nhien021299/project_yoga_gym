@@ -1,6 +1,5 @@
 import 'package:fitness_app_ii_example/controller/custom_controller.dart';
 import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:fitness_app_ii_example/page/custom_exercises/widgets/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +7,7 @@ import '../../widget/default_layout.dart';
 import '../../widget/exercise_set_item_widget.dart';
 
 class CustomExercisesPage extends StatefulWidget {
-  const CustomExercisesPage({Key key}) : super(key: key);
+  const CustomExercisesPage({Key? key}) : super(key: key);
 
   @override
   _CustomExercisesPageState createState() => _CustomExercisesPageState();
@@ -36,7 +35,7 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
               children: [
                 Text(
                   "Customized",
-                  style: Theme.of(context).textTheme.headline4.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -44,7 +43,7 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                 SizedBox(height: 12),
                 Text(
                   "Create your's own style !",
-                  style: Theme.of(context).textTheme.headline5.copyWith(
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.normal,
                       ),
@@ -60,11 +59,16 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                           return Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    customController.exerciseSets[index].name.toString(),
-                                    style: Theme.of(context).textTheme.headline6.copyWith(
+                                    customController.exerciseSets[index].name
+                                        .toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge
+                                        ?.copyWith(
                                           color: Colors.white,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -73,7 +77,10 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                                     children: [
                                       IconButton(
                                         onPressed: () {
-                                          customController.exerciseSetId = customController.exerciseSets[index].id;
+                                          customController.exerciseSetId =
+                                              customController
+                                                      .exerciseSets[index].id ??
+                                                  0;
                                           customController.oneChooseExercise();
                                         },
                                         icon: Icon(
@@ -87,9 +94,18 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                                             title: "Update Name Exercise Set",
                                             hintText: "Enter set name",
                                             onClick: () {
-                                              if (customController.setNameController.text.isNotEmpty) {
-                                                customController.updateExerciseSet(ExerciseSet(
-                                                    id: customController.exerciseSets[index].id, name: customController.setNameController.text));
+                                              if (customController
+                                                  .setNameController
+                                                  .text
+                                                  .isNotEmpty) {
+                                                customController.updateExerciseSet(
+                                                    ExerciseSet(
+                                                        id: customController
+                                                            .exerciseSets[index]
+                                                            .id,
+                                                        name: customController
+                                                            .setNameController
+                                                            .text));
                                                 Get.back();
                                               } else {
                                                 print('Name is empty');
@@ -105,7 +121,9 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                                       IconButton(
                                         onPressed: () {
                                           customController.onDeleteExerciseSet(
-                                            customController.exerciseSets[index].id,
+                                            customController
+                                                    .exerciseSets[index].id ??
+                                                0,
                                           );
                                         },
                                         icon: Icon(
@@ -117,34 +135,65 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                                   ),
                                 ],
                               ),
-                              if (customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).isNotEmpty)
+                              if (customController
+                                  .exerciseByExerciseSetId(
+                                      customController.exerciseSets[index].id ??
+                                          0)
+                                  .isNotEmpty)
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
                                   child: SizedBox(
                                     height: 100,
                                     child: ListView.builder(
-                                      physics: ScrollPhysics(parent: BouncingScrollPhysics()),
+                                      physics: ScrollPhysics(
+                                          parent: BouncingScrollPhysics()),
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).length,
-                                      itemBuilder: (BuildContext context, int i) {
+                                      itemCount: customController
+                                          .exerciseByExerciseSetId(
+                                              customController
+                                                      .exerciseSets[index].id ??
+                                                  0)
+                                          .length,
+                                      itemBuilder:
+                                          (BuildContext context, int i) {
                                         final filteredCustomExercise =
-                                            customController.exerciseByExerciseSetId(customController.exerciseSets[index].id)[i];
+                                            customController
+                                                .exerciseByExerciseSetId(
+                                                    customController
+                                                            .exerciseSets[index]
+                                                            .id ??
+                                                        0)[i];
                                         return GestureDetector(
-                                          onTap: () => customController.exerciseController.playVideo(filteredCustomExercise),
+                                          onTap: () => customController
+                                              .exerciseController
+                                              .playVideo(
+                                                  filteredCustomExercise),
                                           onLongPress: () {
-                                            customController.onDeleteExercise(filteredCustomExercise.id);
+                                            customController.onDeleteExercise(
+                                                filteredCustomExercise.id ?? 0);
                                             print('Delete');
                                           },
-                                          child: ExerciseSetItemWidget(imageUrl: filteredCustomExercise.imageUrl),
+                                          child: ExerciseSetItemWidget(
+                                              imageUrl: filteredCustomExercise
+                                                      .imageUrl ??
+                                                  ''),
                                         );
                                       },
                                     ),
                                   ),
                                 ),
-                              if (customController.exerciseByExerciseSetId(customController.exerciseSets[index].id).isEmpty)
+                              if (customController
+                                  .exerciseByExerciseSetId(
+                                      customController.exerciseSets[index].id ??
+                                          0)
+                                  .isEmpty)
                                 GestureDetector(
                                   onTap: () {
-                                    customController.exerciseSetId = customController.exerciseSets[index].id;
+                                    customController.exerciseSetId =
+                                        customController
+                                                .exerciseSets[index].id ??
+                                            0;
                                     customController.oneChooseExercise();
                                   },
                                   child: Align(
@@ -157,7 +206,8 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                                         padding: EdgeInsets.all(16 / 2),
                                         decoration: BoxDecoration(
                                             color: Colors.transparent,
-                                            borderRadius: BorderRadius.circular(16),
+                                            borderRadius:
+                                                BorderRadius.circular(16),
                                             border: Border.all(
                                               color: Color(0xFF909090),
                                             )),
@@ -183,7 +233,8 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
                     hintText: "Enter set name",
                     onClick: () {
                       if (customController.setNameController.text.isNotEmpty) {
-                        customController.addExerciseSet(ExerciseSet(name: customController.setNameController.text));
+                        customController.addExerciseSet(ExerciseSet(
+                            name: customController.setNameController.text));
                         Get.back();
                       } else {
                         print('Name is empty');

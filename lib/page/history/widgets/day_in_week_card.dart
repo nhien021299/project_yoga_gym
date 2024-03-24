@@ -3,9 +3,9 @@ import 'package:intl/intl.dart';
 
 class DayInWeekCard extends StatelessWidget {
   const DayInWeekCard({
-    Key key,
-    @required this.dateTime,
-    @required this.isSelected,
+    Key? key,
+    required this.dateTime,
+    required this.isSelected,
   }) : super(key: key);
 
   final DateTime dateTime;
@@ -14,9 +14,6 @@ class DayInWeekCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formatDateTime(DateTime dateTime, {String pattern = "dd/MM/yyyy"}) {
-      if (dateTime == null) {
-        return "";
-      }
       final dateFormatter = DateFormat(pattern);
       return dateFormatter.format(dateTime);
     }
@@ -31,12 +28,17 @@ class DayInWeekCard extends StatelessWidget {
             Text(
               formatDateTime(dateTime, pattern: "EEE"),
               style: TextStyle(
-                  fontWeight: FontWeight.bold, color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyText1.color),
+                  fontWeight: FontWeight.bold,
+                  color: isSelected
+                      ? Colors.white
+                      : Theme.of(context).textTheme.bodyLarge?.color),
             ),
             Text(
               dateTime.day.toString(),
-              style: Theme.of(context).textTheme.headline5.copyWith(
-                    color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyText1.color,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: isSelected
+                        ? Colors.white
+                        : Theme.of(context).textTheme.bodyLarge?.color,
                     fontWeight: FontWeight.bold,
                   ),
             ),

@@ -1,9 +1,9 @@
 import 'exercise.dart';
 
 class ExerciseSet {
-  final int id;
-  final String name;
-  final List<Exercise> exercises;
+  final int? id;
+  final String? name;
+  final List<Exercise>? exercises;
 
   const ExerciseSet({
     this.id,
@@ -13,8 +13,8 @@ class ExerciseSet {
 
   factory ExerciseSet.fromJson(Map<String, dynamic> json) {
     return ExerciseSet(
-      id: json['id'] ?? null,
-      name: json['name'] ?? null,
+      id: json['id'],
+      name: json['name'],
     );
   }
 

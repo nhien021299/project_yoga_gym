@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class DefaultLayout extends StatelessWidget {
   const DefaultLayout({
-    Key key,
+    Key? key,
     this.background,
-    @required this.body,
+    required this.body,
   }) : super(key: key);
 
-  final Widget background;
+  final Widget? background;
   final Widget body;
 
   @override

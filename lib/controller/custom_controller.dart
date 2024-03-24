@@ -29,9 +29,9 @@ class CustomController extends GetxController {
 
   final setNameController = TextEditingController();
 
-  final selectedExercise = Rx<Exercise>();
+  final selectedExercise = Rx<Exercise>(Exercise());
 
-  int exerciseSetId;
+  int? exerciseSetId;
 
   List<Exercise> exerciseByExerciseSetId(int exerciseSetId) {
     final result = customExercises.where((e) => e.exerciseSetId == exerciseSetId).toList();
@@ -61,7 +61,7 @@ class CustomController extends GetxController {
   void addCustomExercise(Exercise exercise) async {
     await dbExercise.add(parameter: exercise, table: tableCustomExerciseText);
     loadData();
-    selectedExercise.value = null;
+    selectedExercise.value = Exercise();
   }
 
   void addExerciseSet(ExerciseSet exerciseSet) async {
@@ -81,7 +81,7 @@ class CustomController extends GetxController {
     return result;
   }
 
-  void onRenameExerciseSet({@required String title, @required String hintText, @required Function onClick}) {
+  void onRenameExerciseSet({required String title, required String hintText, required Function() onClick}) {
     Get.dialog(
       DialogWidget(
         title: title,
@@ -155,7 +155,7 @@ class CustomController extends GetxController {
           Get.back();
         },
         onCancel: () {
-          selectedExercise.value = null;
+          selectedExercise.value = Exercise();
           Get.back();
         },
       ),

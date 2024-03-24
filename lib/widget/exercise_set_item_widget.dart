@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ExerciseSetItemWidget extends StatelessWidget {
-  final String imageUrl;
+  final String? imageUrl;
 
-  const ExerciseSetItemWidget({Key key, this.imageUrl}) : super(key: key);
+  const ExerciseSetItemWidget({Key? key, this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ExerciseSetItemWidget extends StatelessWidget {
           ],
         ),
         child: Image.asset(
-          imageUrl,
+          imageUrl ?? '',
           fit: BoxFit.cover,
         ),
       ),

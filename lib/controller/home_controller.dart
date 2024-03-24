@@ -8,11 +8,12 @@ class HomeController extends GetxController {
   final histories = Rx<List<Exercise>>([]);
   final customExercises = RxList<Exercise>();
 
-  final totalKcal = Rx<int>();
-  final totalExercises = Rx<int>();
+  final totalKcal = Rx<int>(0);
+  final totalExercises = Rx<int>(0);
 
   List<Exercise> get dailyActivities => histories.value
-      .where((element) => equalsDate(element.createdAt, DateTime.now()))
+      .where((element) =>
+          equalsDate(element.createdAt ?? DateTime.now(), DateTime.now()))
       .toList();
 
   List<Exercise> exerciseByExerciseSetId(int exerciseSetId) {
@@ -44,7 +45,7 @@ class HomeController extends GetxController {
     totalKcal.value = 0;
     totalExercises.value = dailyActivities.length;
     dailyActivities.forEach(
-      (e) => totalKcal.value += e.kcal,
+      (e) => totalKcal.value += e.kcal ?? 0,
     );
     update();
   }

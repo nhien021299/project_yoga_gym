@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:fitness_app_ii_example/model/exercise_set.dart';
-import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -11,7 +10,6 @@ import '../utils/string_constant.dart';
 
 class Data {
   static final Data _instance = Data._();
-  static Database _database;
 
   Data._();
 
@@ -20,10 +18,7 @@ class Data {
   }
 
   Future<Database> get db async {
-    if (_database != null) {
-      return _database;
-    }
-    _database = await init();
+    final _database = await init();
 
     return _database;
   }
@@ -93,13 +88,13 @@ class Data {
 
   void _onUpgrade(Database db, int oldVersion, int newVersion) {}
 
-  Future<int> add({@required var parameter, @required String table}) async {
+  Future<int> add({required var parameter, required String table}) async {
     var client = await db;
     return client.insert(table, parameter.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<Exercise> getOneExercise(int id) async {
+  Future<Exercise?>? getOneExercise(int id) async {
     var client = await db;
     final Future<List<Map<String, dynamic>>> futureMaps =
         client.query(tableExerciseText, where: 'id = ?', whereArgs: [id]);
@@ -156,7 +151,7 @@ class Data {
     return histories;
   }
 
-  Future<int> update({@required var parameter, @required String table}) async {
+  Future<int> update({required var parameter, required String table}) async {
     var client = await db;
     return client.update(table, parameter.toJson(),
         where: 'id = ?',
@@ -165,7 +160,7 @@ class Data {
   }
 
   Future<int> updateFavorites(
-      {@required var parameter, @required String table}) async {
+      {required var parameter, required String table}) async {
     var client = await db;
     return client.update(table, {'isFavourite': !parameter.isFavourite},
         where: 'id = ?',
@@ -173,7 +168,7 @@ class Data {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<void> remove({@required int id, @required String table}) async {
+  Future<int> remove({required int id, required String table}) async {
     var client = await db;
     return client.delete(table, where: 'id = ?', whereArgs: [id]);
   }

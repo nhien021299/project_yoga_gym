@@ -7,7 +7,7 @@ import '../../widget/exercise_set_item_widget.dart';
 import 'widgets/activity_card.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -48,7 +48,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         "How are you doing?",
-                        style: Theme.of(context).textTheme.headline4.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
                               color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
                             ),
@@ -56,17 +59,18 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(height: 12),
                       Text(
                         "Daily Activities",
-                        style: Theme.of(context).textTheme.headline5.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal,
+                                ),
                       ),
                     ],
                   ),
                   SizedBox(height: 12),
                   Obx(
                     () => ActivityCard(
-                      value: homeController?.totalExercises?.value ?? 0,
+                      value: homeController.totalExercises.value,
                       unit: "Exercises",
                       chartImage: 'assets/icons/line_chart.png',
                       unitIcon: 'assets/icons/exercise.png',
@@ -75,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 12),
                   Obx(
                     () => ActivityCard(
-                      value: homeController?.totalKcal?.value ?? 0,
+                      value: homeController.totalKcal.value,
                       unit: "Calories",
                       chartImage: 'assets/icons/line_chart.png',
                       unitIcon: 'assets/icons/fire.png',
@@ -84,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 12),
                   Text(
                     "Recommend :",
-                    style: Theme.of(context).textTheme.headline5.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.bold,
                         ),
@@ -92,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 12),
                   Text(
                     "Workout basic",
-                    style: Theme.of(context).textTheme.headline6.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.normal,
                         ),
@@ -131,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 12),
                   Text(
                     "Yoga basic",
-                    style: Theme.of(context).textTheme.headline6.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.normal,
                         ),
@@ -173,8 +177,8 @@ class _HomePageState extends State<HomePage> {
                                 "GOOD",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline3
-                                    .copyWith(
+                                    .displaySmall
+                                    ?.copyWith(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold,
                                     ),

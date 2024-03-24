@@ -18,7 +18,7 @@ class FavoriteController extends GetxController {
   loadData() {
     if (exerciseController.exercises.isNotEmpty) {
       final result = exerciseController.exercises;
-      favourites.value = result.where((e) => e.isFavourite).toList();
+      favourites.value = result.where((e) => e.isFavourite ?? false).toList();
     }
     update();
   }

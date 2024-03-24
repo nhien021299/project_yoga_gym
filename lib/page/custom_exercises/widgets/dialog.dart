@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 
 class DialogWidget extends StatelessWidget {
   final String title;
-  final Widget widget;
+  final Widget? widget;
   final Function() onSubmitClicked;
   final Function() onCancel;
 
-  const DialogWidget({Key key, this.widget, this.onSubmitClicked, this.onCancel, this.title}) : super(key: key);
+  const DialogWidget({
+    Key? key,
+    this.widget,
+    required this.onSubmitClicked,
+    required this.onCancel,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class DialogWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 32),
             child: Text(
-              title ?? "",
+              title,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,

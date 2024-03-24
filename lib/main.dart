@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Data dbExercise;
+  late final Data dbExercise;
   @override
   void initState() {
     dbExercise = Data();

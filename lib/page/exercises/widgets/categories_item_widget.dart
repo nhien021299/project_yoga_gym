@@ -5,7 +5,12 @@ class CategoriesItemWidget extends StatefulWidget {
   final String imageUrl;
   final bool isSelected;
 
-  const CategoriesItemWidget({Key key, this.name, this.imageUrl, this.isSelected}) : super(key: key);
+  const CategoriesItemWidget({
+    Key? key,
+    required this.name,
+    required this.imageUrl,
+    required this.isSelected,
+  }) : super(key: key);
 
   @override
   _CategoriesItemWidgetState createState() => _CategoriesItemWidgetState();
@@ -23,7 +28,9 @@ class _CategoriesItemWidgetState extends State<CategoriesItemWidget> {
           width: size.width * 0.4,
           height: size.height * 0.2,
           decoration: BoxDecoration(
-            color: widget.isSelected ? Colors.redAccent.withOpacity(0.8) : Colors.redAccent.withOpacity(0.3),
+            color: widget.isSelected
+                ? Colors.redAccent.withOpacity(0.8)
+                : Colors.redAccent.withOpacity(0.3),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 bottomLeft: Radius.circular(20.0),
@@ -42,7 +49,8 @@ class _CategoriesItemWidgetState extends State<CategoriesItemWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20 / 2, right: 20.0 * 3, top: 20),
+                padding: const EdgeInsets.only(
+                    left: 20 / 2, right: 20.0 * 3, top: 20),
                 child: Text(
                   widget.name,
                   style: TextStyle(

@@ -9,7 +9,7 @@ import 'widgets/day_in_week_card.dart';
 import 'widgets/progress_bar.dart';
 
 class HistoryPage extends StatefulWidget {
-  const HistoryPage({Key key}) : super(key: key);
+  const HistoryPage({Key? key}) : super(key: key);
 
   @override
   _HistoryPageState createState() => _HistoryPageState();
@@ -17,6 +17,7 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   HistoryController historyController = Get.put(HistoryController());
+
   @override
   void initState() {
     setState(() {
@@ -44,7 +45,7 @@ class _HistoryPageState extends State<HistoryPage> {
             children: [
               Text(
                 "Weekly Activity",
-                style: Theme.of(context).textTheme.headline4.copyWith(
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -57,7 +58,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       parent: AlwaysScrollableScrollPhysics()),
                   reverse: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: historyController.listDateTime?.length,
+                  itemCount: historyController.listDateTime.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Obx(
                       () => GestureDetector(
@@ -77,7 +78,7 @@ class _HistoryPageState extends State<HistoryPage> {
               SizedBox(height: 16),
               Text(
                 "Weekly Points",
-                style: Theme.of(context).textTheme.headline5.copyWith(
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -85,7 +86,7 @@ class _HistoryPageState extends State<HistoryPage> {
               SizedBox(height: 16),
               Obx(
                 () => ProgressBar(
-                  currentPoint: historyController?.totalPoint?.value ?? 0,
+                  currentPoint: historyController.totalPoint.value,
                   maxPoint: 2000,
                 ),
               ),

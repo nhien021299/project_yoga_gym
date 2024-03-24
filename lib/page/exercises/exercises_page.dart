@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '../../controller/exercise_controller.dart';
@@ -9,7 +8,7 @@ import '../../widget/exercises_item_widget.dart';
 import 'widgets/categories_item_widget.dart';
 
 class ExercisesPage extends StatefulWidget {
-  const ExercisesPage({Key key}) : super(key: key);
+  const ExercisesPage({Key? key}) : super(key: key);
 
   @override
   _ExercisesPageState createState() => _ExercisesPageState();
@@ -37,7 +36,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     "Exercise",
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.bold,
                         ),
@@ -48,7 +47,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     "Categories",
-                    style: Theme.of(context).textTheme.headline5.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.normal,
                         ),

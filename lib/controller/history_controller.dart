@@ -6,14 +6,15 @@ import 'exercise_controller.dart';
 class HistoryController extends GetxController {
   final ExerciseController exerciseController = Get.find();
   final histories = Rx<List<Exercise>>([]);
-  final totalPoint = Rx<int>();
+  final totalPoint = Rx<int>(0);
   final now = DateTime.now();
   final selectedDay = Rx<DateTime>(DateTime.now());
 
-  List<DateTime> listDateTime;
+  List<DateTime> listDateTime = [];
 
   List<Exercise> get filteredHistories => histories.value
-      .where((element) => equalsDate(element.createdAt, selectedDay.value))
+      .where((element) =>
+          equalsDate(element.createdAt ?? DateTime.now(), selectedDay.value))
       .toList();
 
   @override
@@ -43,8 +44,8 @@ class HistoryController extends GetxController {
   void getTotalPoint() {
     totalPoint.value = 0;
     filteredHistories.forEach((e) {
-      if (DateTime.now().difference(e.createdAt).inDays < 7) {
-        totalPoint.value += e.point;
+      if (DateTime.now().difference(e.createdAt ?? DateTime.now()).inDays < 7) {
+        totalPoint.value += e.point ?? 0;
       }
     });
     if (totalPoint.value > 2000) totalPoint.value = 2000;

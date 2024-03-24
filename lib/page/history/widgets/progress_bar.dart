@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({
-    Key key,
-    @required this.currentPoint,
-    @required this.maxPoint,
+    Key? key,
+    required this.currentPoint,
+    required this.maxPoint,
   }) : super(key: key);
 
   final int currentPoint, maxPoint;
@@ -30,17 +30,17 @@ class ProgressBar extends StatelessWidget {
           children: [
             Text(
               "$currentPoint pts",
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             Text(
               2000.toString() + " pts",
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),

@@ -81,9 +81,9 @@ class ExerciseController extends GetxController {
   void checkTableEmpty() async {
     var db = await dbExercise.db;
 
-    int count = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM exercise'));
-    int exerciseSetCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableExerciseSet'));
-    int customExerciseCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableCustomExercise'));
+    int? count = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM exercise'));
+    int? exerciseSetCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableExerciseSet'));
+    int? customExerciseCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableCustomExercise'));
 
     if (count == 0 && exerciseSetCount == 0 && customExerciseCount == 0) {
       defaultExercise.forEach(

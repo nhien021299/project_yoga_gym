@@ -7,7 +7,7 @@ import '../../widget/default_layout.dart';
 import '../../widget/exercises_item_widget.dart';
 
 class FavouritePage extends StatelessWidget {
-  FavouritePage({Key key}) : super(key: key);
+  FavouritePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class FavouritePage extends StatelessWidget {
               children: [
                 Text(
                   "Favourite Exercises",
-                  style: Theme.of(context).textTheme.headline4.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -46,16 +46,24 @@ class FavouritePage extends StatelessWidget {
                                 children: List.generate(
                                   controller.favourites.value.length,
                                   (index) => Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: defaultPadding),
                                     child: GestureDetector(
-                                      onTap: () => controller.exerciseController.playVideo(controller.favourites.value[index]),
+                                      onTap: () => controller.exerciseController
+                                          .playVideo(controller
+                                              .favourites.value[index]),
                                       child: ExercisesItemWidget(
-                                        image: controller.favourites.value[index].imageUrl,
-                                        title: controller.favourites.value[index].name,
-                                        value: controller.favourites.value[index].reps,
-                                        isFavorite: controller.favourites.value[index].isFavourite,
+                                        image: controller
+                                            .favourites.value[index].imageUrl,
+                                        title: controller
+                                            .favourites.value[index].name,
+                                        value: controller
+                                            .favourites.value[index].reps,
+                                        isFavorite: controller.favourites
+                                            .value[index].isFavourite,
                                         onTap: () {
-                                          controller.exerciseController.updateFavorites(
+                                          controller.exerciseController
+                                              .updateFavorites(
                                             controller.favourites.value[index],
                                           );
                                           controller.loadData();
