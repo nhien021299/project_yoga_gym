@@ -31,6 +31,7 @@ class _CustomExercisesPageState extends State<CustomExercisesPage> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              /// NOTE: Day la UI dạng cột
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(

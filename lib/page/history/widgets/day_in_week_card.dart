@@ -24,6 +24,7 @@ class DayInWeekCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16 / 2),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               formatDateTime(dateTime, pattern: "EEE"),

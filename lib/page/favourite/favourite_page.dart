@@ -24,6 +24,7 @@ class FavouritePage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(defaultPadding),
             child: Column(
+              /// NOTE: Day la UI dạng cột
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
