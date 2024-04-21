@@ -1,3 +1,4 @@
+import 'package:fitness_app_ii_example/page/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,9 +11,14 @@ import 'widgets/categories_item_widget.dart';
 class ExercisesPage extends StatefulWidget {
   const ExercisesPage({Key? key}) : super(key: key);
 
+
   @override
   _ExercisesPageState createState() => _ExercisesPageState();
+
+
 }
+
+
 
 class _ExercisesPageState extends State<ExercisesPage> {
   ExerciseController _exerciseController = Get.find();
@@ -29,17 +35,29 @@ class _ExercisesPageState extends State<ExercisesPage> {
           backgroundColor: Colors.transparent,
           body: SafeArea(
             child: Column(
+              /// NOTE: Day la UI dạng cột
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    "Exercise",
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Exercise",
+                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      InkWell(
+                        onTap: () => Get.to(()=> SearchExercisePage()),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.grey,
                         ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(height: 12),
@@ -53,6 +71,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         ),
                   ),
                 ),
+
                 SizedBox(
                   height: 300,
                   child: ListView.builder(

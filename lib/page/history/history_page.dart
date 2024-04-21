@@ -41,6 +41,7 @@ class _HistoryPageState extends State<HistoryPage> {
           height: Get.height,
           padding: EdgeInsets.all(16 * 1.5),
           child: Column(
+            /// NOTE: Day la UI dạng cột
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
@@ -52,11 +53,12 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
               SizedBox(height: 16),
               SizedBox(
-                height: 70,
+                height: 80,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics()),
                   reverse: true,
+                  shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: historyController.listDateTime.length,
                   itemBuilder: (BuildContext context, int index) {

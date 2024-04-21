@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:fitness_app_ii_example/data/custom_exercise_data.dart';
 import 'package:fitness_app_ii_example/model/exercise_set.dart';
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../data/exercise_data.dart';
 import '../model/exercise.dart';
 import '../utils/string_constant.dart';
 
@@ -109,23 +112,42 @@ class Data {
 
   Future<List<Exercise>> getExercises() async {
     var client = await db;
+
     var res = await client.query(tableExerciseText);
 
     List<Exercise> exercises = [];
+
     if (res.isNotEmpty) {
-      exercises = res.map((map) => Exercise.fromJson(map)).toList();
+      for (var e in res) {
+        remove(id: int.parse(e['id'].toString()), table: tableExerciseText);
+      }
     }
+
+    defaultExercise.forEach(
+      (e) => add(parameter: e, table: tableExerciseText),
+    );
+    exercises.assignAll(defaultExercise);
     return exercises;
   }
 
   Future<List<Exercise>> getCustomExercises() async {
     var client = await db;
+
     var res = await client.query(tableCustomExerciseText);
 
     List<Exercise> customExercises = [];
     if (res.isNotEmpty) {
-      customExercises = res.map((map) => Exercise.fromJson(map)).toList();
+      for (var e in res) {
+        remove(
+            id: int.parse(e['id'].toString()), table: tableCustomExerciseText);
+      }
     }
+
+    defaultCustomExercise.forEach(
+      (e) => add(parameter: e, table: tableCustomExerciseText),
+    );
+
+    customExercises.assignAll(defaultCustomExercise);
     return customExercises;
   }
 

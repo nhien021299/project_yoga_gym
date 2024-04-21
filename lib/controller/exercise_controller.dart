@@ -1,11 +1,8 @@
-import '../data/custom_exercise_data.dart';
 
 import '../page/exercise_video/exercise_video_page.dart';
-import 'package:sqflite/sqflite.dart';
 
 import 'package:get/get.dart';
 
-import '../data/exercise_data.dart';
 import '../dbhelper/init_db_helper.dart';
 import '../model/exercise.dart';
 import '../utils/string_constant.dart';
@@ -13,7 +10,6 @@ import '../utils/string_constant.dart';
 class ExerciseController extends GetxController {
   @override
   void onInit() {
-    checkTableEmpty();
     getAllList();
     super.onInit();
   }
@@ -76,22 +72,5 @@ class ExerciseController extends GetxController {
         exercise: exercise,
       ),
     );
-  }
-
-  void checkTableEmpty() async {
-    var db = await dbExercise.db;
-
-    int? count = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM exercise'));
-    int? exerciseSetCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableExerciseSet'));
-    int? customExerciseCount = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM tableCustomExercise'));
-
-    if (count == 0 && exerciseSetCount == 0 && customExerciseCount == 0) {
-      defaultExercise.forEach(
-        (e) => dbExercise.add(parameter: e, table: tableExerciseText),
-      );
-      defaultCustomExercise.forEach(
-        (e) => dbExercise.add(parameter: e, table: tableCustomExerciseText),
-      );
-    }
   }
 }

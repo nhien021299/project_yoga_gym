@@ -26,6 +26,7 @@ class HistoryController extends GetxController {
   void loadData() async {
     listDateTime = List<DateTime>.generate(
         7, (index) => now.subtract(Duration(days: index)));
+
     await exerciseController.dbExercise
         .getExerciseHistories()
         .then((value) => histories.value = value);
